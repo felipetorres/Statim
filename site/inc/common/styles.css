@@ -4,36 +4,30 @@
 	color: #424242;
 }
 
-body
-{
+body {
 	background: url('backgroundtile.png') fixed top;
 }
 
-.margin
-{
+.margin {
 	margin-bottom: 10px;
 }
 
-#container
-{
+#container {
 	width: 925px;
 	margin: 0 auto;
 	height: auto;
 	padding-top: 36px;
 }
 
-#head
-{
+#head {
 	width: 800px;
 	margin: 0 auto;
 	height: auto;
 	border-top: 1px dotted #525252;
 	border-bottom: 1px dotted #525252;
-
 }
 
-#head .logo
-{
+#head .logo {
 	height: 0;
 	width: 0;
 	padding-left: 290px;
@@ -45,8 +39,7 @@ body
 	float: left;
 }
 
-#head .nav
-{
+#head .nav {
 	color: #454444;
 	font-size: 14px;
 	font-weight: bold;
@@ -54,15 +47,13 @@ body
 	margin-top: 33px;
 }
 
-#head .nav a
-{
+#head .nav a {
 	color: #454444;
 	text-decoration: none;
 	padding: 10px;
 }
 
-#head .nav a:hover
-{
+#head .nav a:hover {
 	background: #eee;
 }
 
@@ -70,19 +61,17 @@ body
 	color: #eeefff;
 }
 
-#head .nav .off:hover{
+#head .nav .off:hover {
 	background: none;
 }
 
-#content
-{
+#content {
 	width: 800px;
 	margin: 25px auto;
 	height: auto;
 }
 
-#content h1
-{
+#content h1 {
 	padding: 25px 0;
 }
 
@@ -99,36 +88,31 @@ body
 #content dd {
 	margin-bottom: 5px;
 }
-#content p
-{
+
+#content p {
 	text-indent: 20px;
 	text-align: justify;
 	line-height: 25px;
 	margin-bottom: 20px;
-
 }
 
-#content .intro
-{
+#content .intro {
 	padding: 10px;
 	margin-bottom: 25px;
 	background: #eee;
 }
 
-#content .intro em
-{
+#content .intro em {
 	font-size: 13px;
 }
 
-#content .intro p
-{
+#content .intro p {
 	font-size: 13px;
 	line-height: 19px;
 	margin: 5px;
 }
 
-#content .intro p a
-{
+#content .intro p a {
 	color: #454444;
 	text-decoration: none;
 	font-weight: bold;
@@ -166,8 +150,7 @@ body
 	margin: 0px;
 }
 
-#content .contato
-{
+#content .contato {
 	height: auto;
 }
 
