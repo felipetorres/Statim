@@ -1,0 +1,7 @@
+@import url('reset.css');
+@import url('styles.css');
+
+.clear
+{
+	clear: both;
+}

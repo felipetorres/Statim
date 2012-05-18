@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<title>Statin - Um sistema de apoio a empresas de motoboys</title>
+<link rel="stylesheet" type="text/css" href="inc/common/main.css" />
+<link href="css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="inc/js/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="inc/js/collapse.js"></script>
+<script type="text/javascript" src="inc/js/functions.js"></script>
+<script type="text/javascript" src="inc/js/clear-default.js"></script>
+<script type="text/javascript" src="inc/js/validate.js"></script>
+<script type="text/javascript" src="inc/js/links.js"></script>
+<script type="text/javascript">
+	animatedcollapse.addDiv('iniciobox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.addDiv('propostabox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.addDiv('monografiabox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.addDiv('codigobox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.addDiv('contatobox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.ontoggle=function($, divobj, state){}
+	animatedcollapse.init()
+</script>
+<script language="javascript" type="text/javascript" src="inc/js/jquery.smoothanchors2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.smoothAnchors(1500, "swing", false);
+});
+</script>
+	<script type="text/javascript" src="inc/js/jquery.js"></script>
+	<script type="text/javascript" src="inc/js/easySlider1.7.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){	
+			$("#slider").easySlider({
+				auto: true, 
+				continuous: true
+			});
+		});	
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="head">
+			<img class="logo" title="Statin"/>
+			<div class="nav">
+				<a href="#inicio">Início</a>
+				<a href="#proposta">Proposta</a>
+				<a class="off" href="#monografia">Monografia</a>
+				<a class="off" href="#codigo">Código</a>
+				<a href="#contato">Contato</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!-- End Head -->
+		<a name="inicio"></a>
+		<div id="content">
+			<div class="intro">
+				<p>A determinação eficiente de rotas é um problema sofrido por muitas empresas que precisam encontrar o caminho mais eficiente para um determinado destino.</p>
+				<p>Criado para a disciplina <em>MAC499 - Trabalho de Formatura Supervisionado</em> pelos alunos Felipe de Godoi Torres e Geraldo Castro Zampoli sob orientação do professor Alfredo Goldman, o Statin é um programa de apoio às empresas que precisam de eficiência nessa definição de rotas. Para mais informações, clique nos balões.</p>
+			</div>
+			<div class="inicio">
+				<a href="'void(0)'" rel="toggle[iniciobox]" data-openimage="inc/common/iniciocollapse.png" data-closedimage="inc/common/inicioexpand.png"><img src="inc/common/iniciocollapse.png" alt="inicio" border="0" /></a>
+
+				<p>Algumas informações gerais sobre a disciplina e links úteis ao trabalho.</p>
+
+				<div id="iniciobox">
+					<ul>
+						<li><p><a href="http://www.ime.usp.br/~cef/mac499-12/regras.html" target="_blank">Sobre</a> a disciplina <em>MAC499 - Trabalho de Formatura Supervisionado</em>.</p></li>
+						<li><p><a href="http://noo.stoa.usp.br/fgtorres/blog" target="_blank">Blog</a> sobre as atividades realizadas durante a disciplina.</p></li>
+						<li><p>Repositório do Statin.</p></li>
+					</ul>
+				</div>
+			</div>
+
+			<a name="proposta"></a>
+			<div class="proposta">
+			<a href="'void(0)'" rel="toggle[propostabox]" data-openimage="inc/common/propostacollapse.png" data-closedimage="inc/common/propostaexpand.png"><img src="inc/common/propostacollapse.png" alt="proposta" border="0" /></a>
+				<p>Um sistema de apoio a empresas de motoboys em conjunto com <em>PCS2590 - Criação e Administração de Empresas de Computação</em>.</p>
+			
+				<div id="propostabox">
+					<h1>Tema</h1>
+
+					<p>Implementação de um sistema de otimização de rotas usando GPS com o auxílio da plataforma Android.</p>
+
+					<h1>Resumo</h1>
+			
+					<p>Uma grande quantidade de empresas de entrega e retirada de produtos faz o gerenciamento dos seus funcionários em 
+					campo de maneira manual, de forma que uma rota para a retirada de um produto é definida de acordo com a experiência 
+					do profissional responsável pelo acompanhamento dos entregadores. No entanto, esse profissional nem sempre é capaz 
+					de definir a melhor rota para os motoboys, causando gastos desnecessários de combustível e tempo de deslocamento 
+					até o ponto de destino.</p>
+					<p>Visando atender esse contexto, neste trabalho será desenvolvido um sistema (que contará com uma parte mobile) para 
+					a otimização das rotas a um determinado destino. Para tanto, usaremos o GPS presente nos celulares que possuem o 
+					sistema operacional Android para o rastreamento dos motoboys, além do Google Maps para uma exibição dos pontos 
+					rastreados e da rota sugerida.</p>
+					<p>Durante o curso dessa implementação, serão descritos alguns algorítmos de otimização, com ênfase nos Algorítmos Genéticos.</p>
+
+					<h1>Objetivos</h1>
+					<ul>
+						<li><p>Desenvolver um sistema para otimizar as rotas dos motoboys até um ponto específico do mapa valendo-se de algumas 
+							funcionalidades disponíveis em celulares Android (como GPS e a integração com a API do Google Maps) e técnicas de 
+							otimização combinatória.</p></li>
+						<li><p>Esperamos que esse programa possa se tornar um produto a ser comercializado por uma empresa (cuja criação será 
+							posterior à conclusão desse trabalho), usando técnicas de empreendedorismo vistas na matéria <em>PCS2590 - Criação e 
+							Administração de Empresas de Computação</em>.</p></li>
+					</ul>
+
+					<h1>Atividades já realizadas</h1>
+					<ul>
+						<li><p>Estudo sobre algorítmos genéticos;</p></li>
+						<li><p>Resolução de problemas clássicos de otimização combinatória usando Algorítmos Genéticos;</p></li>
+						<li><p>Estudo e criação de aplicativos simples usando a plataforma Android.</p></li>
+						<li><p>Criação de um <a href="http://noo.stoa.usp.br/fgtorres/blog" target="_blank">blog no Stoa</a> sobre as atividades do trabalho.</p></li>
+						<li><p>Preparação do ambiente de desenvolvimento.</p></li>
+					</ul>
+				
+					<h1>Estrutura esperada da monografia</h1>
+				
+					<dl>
+					<dt>Resumo</dt>
+					<dt>Introdução</dt>
+						<dd>Contextualização</dd>
+						<dd>Organização do trabalho</dd>
+					<dt>Fundamentos</dt>
+						<dd>Android</dd>
+						<dd>Google Maps</dd>
+					<dt>O algoritmo</dt>
+						<dd>Descrição</dd>
+						<dd>Implementação</dd>
+					<dt>Análise dos resultados</dt>
+					<dt>Parte Subjetiva</dt>
+					</dl>
+				</div>
+			</div>
+
+
+<!--		<a name="monografia"></a>
+		<div class="work">
+		<a href="'void(0)'" rel="toggle[monografiabox]" data-openimage="inc/common/monografiacollapse.png" data-closedimage="inc/common/monografiaexpand.png"><img src="inc/common/monografiacollapse.png" alt="monografia" border="0" /></a>
+		<p id="monografiabox" style="text-align: center;">
+				<img src="inc/common/shot1.png" alt="monografia entry 1" style="width: 750px; height: 300px;" border="0" />					
+		</p>
+		</div>
+
+		<a name="codigo"></a>
+		<div class="work">
+		<a href="'void(0)'" rel="toggle[codigobox]" data-openimage="inc/common/monografiacollapse.png" data-closedimage="inc/common/monografiaexpand.png"><img src="inc/common/monografiacollapse.png" alt="monografia" border="0" /></a>
+		<p id="codigobox" style="text-align: center;">
+				<img src="inc/common/shot1.png" alt="monografia entry 1" style="width: 750px; height: 300px;" border="0" />					
+		</p>
+		</div>
+-->
+
+			<a name="contato"></a>
+			<div class="contato">
+				<a href="'void(0)'" rel="toggle[contatobox]" data-openimage="inc/common/getintouchcollapse.png" data-closedimage="inc/common/getintouchexpand.png"><img src="inc/common/getintouchcollapse.png" alt="contato" border="0" /></a>
+				<p>Informações para contato dos desenvolvedores do projeto.</p>
+				<div id="contatobox">
+					<p>Felipe Torres: felipe.gtorres(at)gmail(dot)com</p>
+					<p>Geraldo Zampoli: shaka_vp(at)gmail(dot)com</p>
+				</div>
+			</div>
+			<div id="fonte">
+				Design inspirado em <a href="http://www.csstemplatesfree.org/simplefolio.html" target="_blank">SimpleFolio</a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

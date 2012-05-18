@@ -1,0 +1,237 @@
+* {
+	font-size: 16px;
+	font-family: arial;
+	color: #424242;
+}
+
+body
+{
+	background: url('backgroundtile.png') fixed top;
+}
+
+.margin
+{
+	margin-bottom: 10px;
+}
+
+#container
+{
+	width: 925px;
+	margin: 0 auto;
+	height: auto;
+	padding-top: 36px;
+}
+
+#head
+{
+	width: 800px;
+	margin: 0 auto;
+	height: auto;
+	border-top: 1px dotted #525252;
+	border-bottom: 1px dotted #525252;
+
+}
+
+#head .logo
+{
+	height: 0;
+	width: 0;
+	padding-left: 383px;
+	padding-top: 39px;
+	background: url('statin.png');
+	overflow: hidden;
+	display: block;
+	margin: 20px 0px;
+	float: left;
+}
+
+#head .nav
+{
+	color: #454444;
+	font-size: 14px;
+	font-weight: bold;
+	float: right;
+	margin-top: 33px;
+}
+
+#head .nav a
+{
+	color: #454444;
+	text-decoration: none;
+	padding: 10px;
+}
+
+#head .nav .off {
+	color: #eeefff;
+}
+
+#head .nav .off:hover{
+	background: none;
+}
+
+#head .nav a:hover
+{
+	background: #eee;
+}
+
+#content
+{
+	width: 800px;
+	margin: 25px auto;
+	height: auto;
+}
+
+#content h1
+{
+	padding: 25px 0;
+}
+
+#content ul {
+	list-style: disc;
+	list-style-position: inside;
+}
+
+#content dt, dl {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#content dd {
+	margin-bottom: 5px;
+}
+#content p
+{
+	text-indent: 20px;
+	text-align: justify;
+	line-height: 25px;
+	margin-bottom: 20px;
+
+}
+
+#content .intro
+{
+	padding: 10px;
+	margin-bottom: 25px;
+	background: #eee;
+}
+
+#content .intro p
+{
+	font-size: 13px;
+	line-height: 19px;
+	margin: 5px;
+}
+
+#content .intro p a
+{
+	color: #454444;
+	text-decoration: none;
+
+	font-weight: bold;
+}
+
+#content .intro p a:hover
+{
+	text-decoration: underline;
+}
+
+#content .iniciobubble
+{
+	height: 0;
+	width: 0;
+	padding-left: 465px;
+	padding-top: 66px;
+	background: url('iniciobubble.png');
+	overflow: hidden;
+	display: block;
+}
+
+#content .inicio
+{
+	width: 800px;
+	border-bottom: 1px dotted #525252;
+	padding: 0px 0px 20px 0px;
+}
+
+#content .inicio p a
+{
+	background: #e2e2e2;
+	text-decoration: none;
+}
+
+#content .inicio p a:hover
+{
+	text-decoration: underline;
+}
+
+#content .proposta
+{
+	width: 800px;
+	border-bottom: 1px dotted #525252;
+	padding: 0px 0px 20px 0px;
+	margin: 50px 0px 0px 0px;
+}
+
+#content .proposta p a
+{
+	background: #e2e2e2;
+	text-decoration: none;
+}
+
+#content .proposta p a:hover
+{
+	text-decoration: underline;
+}
+
+.graphimg
+{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content .work
+{
+	width: 800px;
+	border-bottom: 1px dotted #525252;
+	padding: 0px 0px 20px 0px;
+	margin: 50px 0px 0px 0px;
+}
+
+#content .work p a
+{
+	background: #e2e2e2;
+	text-decoration: none;
+}
+
+#content .work p a:hover
+{
+	text-decoration: underline;
+}
+
+#content .contato
+{
+	width: 800px;
+	border-bottom: 1px dotted #525252;
+	padding: 0px 0px 20px 0px;
+	margin: 50px 0px 0px 0px;
+	height: auto;
+}
+
+#content .contato p a
+{
+	background: #e2e2e2;
+	text-decoration: none;
+}
+
+#content .contato p a:hover
+{
+	text-decoration: underline;
+}
+
+#content #fonte {
+	padding: 10px 0;
+	color: #777;
+	font-size: 12px;
+	float: right;
+}
