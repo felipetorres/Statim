@@ -36,7 +36,7 @@ body
 {
 	height: 0;
 	width: 0;
-	padding-left: 383px;
+	padding-left: 290px;
 	padding-top: 39px;
 	background: url('statin.png');
 	overflow: hidden;
@@ -61,17 +61,17 @@ body
 	padding: 10px;
 }
 
+#head .nav a:hover
+{
+	background: #eee;
+}
+
 #head .nav .off {
 	color: #eeefff;
 }
 
 #head .nav .off:hover{
 	background: none;
-}
-
-#head .nav a:hover
-{
-	background: #eee;
 }
 
 #content
@@ -115,6 +115,11 @@ body
 	background: #eee;
 }
 
+#content .intro em
+{
+	font-size: 13px;
+}
+
 #content .intro p
 {
 	font-size: 13px;
@@ -126,113 +131,61 @@ body
 {
 	color: #454444;
 	text-decoration: none;
-
 	font-weight: bold;
 }
 
-#content .intro p a:hover
-{
-	text-decoration: underline;
-}
-
-#content .iniciobubble
-{
-	height: 0;
-	width: 0;
-	padding-left: 465px;
-	padding-top: 66px;
-	background: url('iniciobubble.png');
-	overflow: hidden;
-	display: block;
-}
-
-#content .inicio
-{
-	width: 800px;
-	border-bottom: 1px dotted #525252;
-	padding: 0px 0px 20px 0px;
-}
-
-#content .inicio p a
-{
-	background: #e2e2e2;
-	text-decoration: none;
-}
-
-#content .inicio p a:hover
-{
-	text-decoration: underline;
-}
-
-#content .proposta
-{
-	width: 800px;
-	border-bottom: 1px dotted #525252;
-	padding: 0px 0px 20px 0px;
-	margin: 50px 0px 0px 0px;
-}
-
-#content .proposta p a
-{
-	background: #e2e2e2;
-	text-decoration: none;
-}
-
-#content .proposta p a:hover
-{
-	text-decoration: underline;
-}
-
-.graphimg
-{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#content .work
-{
-	width: 800px;
-	border-bottom: 1px dotted #525252;
-	padding: 0px 0px 20px 0px;
-	margin: 50px 0px 0px 0px;
-}
-
+#content .inicio p a,
+#content .proposta p a,
 #content .work p a
 {
 	background: #e2e2e2;
 	text-decoration: none;
 }
 
+#content .intro p a:hover,
+#content .inicio p a:hover,
+#content .proposta p a:hover,
 #content .work p a:hover
 {
 	text-decoration: underline;
 }
 
+#content .inicio, 
+#content .proposta, 
+#content .work, 
+#content .empreendedorismo, 
 #content .contato
 {
 	width: 800px;
 	border-bottom: 1px dotted #525252;
 	padding: 0px 0px 20px 0px;
 	margin: 50px 0px 0px 0px;
+}
+
+#content .inicio {
+	margin: 0px;
+}
+
+#content .contato
+{
 	height: auto;
 }
 
-#content .contato #felipe {
+#content .contato #felipe, #content .contato #geraldo {
 	width: 265px;
 	height: 15px;
-	background:url(emails.png) 0 0 no-repeat;
-	background-position-x: 100px;
-	background-position-y: 1px;
 	margin: 0 0 10px 20px;
 }
 
+#content .contato #felipe {
+	background:url(emails.png) 0 0 no-repeat;
+	background-position-x: 100px;
+	background-position-y: 1px;
+}
+
 #content .contato #geraldo {
-	width: 265px;
-	height: 15px;
 	background:url(emails.png) 0 -15px no-repeat;
 	background-position-x: 120px;
-	margin: 0 0 10px 20px;
 }
 
 #content #fonte {
