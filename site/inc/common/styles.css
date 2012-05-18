@@ -218,15 +218,21 @@ body
 	height: auto;
 }
 
-#content .contato p a
-{
-	background: #e2e2e2;
-	text-decoration: none;
+#content .contato #felipe {
+	width: 265px;
+	height: 15px;
+	background:url(emails.png) 0 0 no-repeat;
+	background-position-x: 100px;
+	background-position-y: 1px;
+	margin: 0 0 10px 20px;
 }
 
-#content .contato p a:hover
-{
-	text-decoration: underline;
+#content .contato #geraldo {
+	width: 265px;
+	height: 15px;
+	background:url(emails.png) 0 -15px no-repeat;
+	background-position-x: 120px;
+	margin: 0 0 10px 20px;
 }
 
 #content #fonte {
