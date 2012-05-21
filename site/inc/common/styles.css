@@ -146,6 +146,10 @@ body {
 	margin: 0px;
 }
 
+#content #empreendedorismobox {
+	padding-top: 1px;
+}
+
 #content .contato {
 	height: auto;
 }
