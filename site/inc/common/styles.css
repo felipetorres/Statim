@@ -4,6 +4,10 @@
 	color: #424242;
 }
 
+#content .intro * {
+	font-size: 13px;
+}
+
 body {
 	background: url('backgroundtile.png') fixed top;
 }
@@ -41,7 +45,6 @@ body {
 
 #head .nav {
 	color: #454444;
-	font-size: 14px;
 	font-weight: bold;
 	float: right;
 	margin-top: 33px;
@@ -96,26 +99,16 @@ body {
 	margin-bottom: 20px;
 }
 
+
 #content .intro {
 	padding: 10px;
 	margin-bottom: 25px;
 	background: #eee;
 }
 
-#content .intro em {
-	font-size: 13px;
-}
-
 #content .intro p {
-	font-size: 13px;
 	line-height: 19px;
 	margin: 5px;
-}
-
-#content .intro p a {
-	color: #454444;
-	text-decoration: none;
-	font-weight: bold;
 }
 
 #content .inicio p a,
@@ -126,7 +119,6 @@ body {
 	text-decoration: none;
 }
 
-#content .intro p a:hover,
 #content .inicio p a:hover,
 #content .proposta p a:hover,
 #content .work p a:hover
@@ -161,19 +153,20 @@ body {
 }
 
 #content .contato #felipe {
-	background:url(emails.png) 0 0 no-repeat;
-	background-position-x: 100px;
-	background-position-y: 1px;
+	background:url(emails.png) 100px 1px no-repeat;
 }
 
 #content .contato #geraldo {
-	background:url(emails.png) 0 -15px no-repeat;
-	background-position-x: 120px;
+	background:url(emails.png) 120px -15px no-repeat;
+}
+
+#content #fonte, #content #fonte a {
+	font-size: 12px;
 }
 
 #content #fonte {
 	padding: 10px 0;
 	color: #777;
-	font-size: 12px;
 	float: right;
 }
+
