@@ -111,6 +111,7 @@ body {
 	margin: 5px;
 }
 
+#content dt a,
 #content li a,
 #content .inicio p a,
 #content .proposta p a,
@@ -120,6 +121,7 @@ body {
 	text-decoration: none;
 }
 
+#content dt a:hover,
 #content li a:hover,
 #content .inicio p a:hover,
 #content .proposta p a:hover,
