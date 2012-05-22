@@ -1,0 +1,11 @@
+Para evitar problemas de configuração de ambiente durante o desenvolvimento do 
+aplicativo Android, optamos por ignorar alterações nos arquivos .classpath 
+e .project.
+Entretanto, há uma versão inicial desses arquivos com o nome de classpath.example e
+project.example.
+Para importar o projeto no Eclipse, basta renomear os arquivos da seguinte forma:
+
+mv classpath.example .classpath
+mv project.example .project
+
+Após isso, basta usar o comando Import... da própria IDE do Eclipse.
