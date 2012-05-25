@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="hello">Hello World, c2dm-register!</string>
-    <string name="app_name">c2dm-register</string>
-
-</resources>
