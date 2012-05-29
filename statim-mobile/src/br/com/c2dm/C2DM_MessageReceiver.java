@@ -18,6 +18,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import constants.StatimConstants;
 
 public class C2DM_MessageReceiver extends BroadcastReceiver {
 	
@@ -50,7 +51,7 @@ public class C2DM_MessageReceiver extends BroadcastReceiver {
 		}
 	}
 	private void enviaPara(String ip, double lat, double lon) {
-		String url = "http://" + ip + ":8080/statim-server/" + String.valueOf(lat) + "/" + String.valueOf(lon);
+		String url = StatimConstants.server_url + "/map/" + String.valueOf(lat) + "/" + String.valueOf(lon);
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext context = new BasicHttpContext();
 		HttpGet get = new HttpGet(url);

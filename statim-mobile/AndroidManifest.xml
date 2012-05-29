@@ -37,7 +37,7 @@
           </intent-filter>
         </receiver>
         
-        <receiver android:name="br.com.c2dm.C2DM_MessageReceiver"
+        <receiver android:name=".C2DM_MessageReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
