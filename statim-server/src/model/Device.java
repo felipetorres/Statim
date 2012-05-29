@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Device {
@@ -11,19 +12,21 @@ public class Device {
 	@GeneratedValue
 	private long id;
 	
-	private String senderHash;
-	private String hash;
+	@ManyToOne
+	private Sender sender;
 	
-	public String getSenderHash() {
-		return senderHash;
+	private String registrationId;
+	
+	public Device() {
+		// TODO hibernate requires
 	}
-	public void setSenderHash(String senderHash) {
-		this.senderHash = senderHash;
+	
+	public Device(Sender sender, String registrationId) {
+		this.sender = sender;
+		this.registrationId = registrationId;
 	}
-	public String getHash() {
-		return hash;
-	}
-	public void setHash(String hash) {
-		this.hash = hash;
+
+	public String getRegistrationId() {
+		return this.registrationId;
 	}
 }

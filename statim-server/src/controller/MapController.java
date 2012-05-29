@@ -13,7 +13,7 @@ public class MapController {
 		this.result = result;
 	}
 
-	@Path("/{latitude}/{longitude}")
+	@Path("/map/{latitude}/{longitude}")
 	public void showMap(String latitude, String longitude) {
 		result.include("latitude", latitude);
 		result.include("longitude", longitude);

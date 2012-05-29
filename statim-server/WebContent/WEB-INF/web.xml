@@ -16,4 +16,14 @@
     	<param-name>br.com.caelum.vraptor.encoding</param-name>
     	<param-value>UTF-8</param-value>
 	</context-param>
+	
+  	<context-param>
+  	    <param-name>br.com.caelum.vraptor.packages</param-name>
+  	    <param-value>br.com.caelum.vraptor.util.hibernate</param-value>
+  	</context-param>
+  	
+  	<context-param>
+  	    <param-name>br.com.caelum.vraptor.provider</param-name>
+  	    <param-value>br.com.caelum.vraptor.util.hibernate.HibernateCustomProvider</param-value>
+  	</context-param>
 </web-app>
