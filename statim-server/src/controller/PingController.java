@@ -15,17 +15,14 @@ import model.Device;
 import model.Sender;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
 import dao.SenderDao;
 
 @Resource
 public class PingController {
 
-	private final Result result;
 	private final SenderDao senders;
 
-	public PingController(Result result, SenderDao senders) {
-		this.result = result;
+	public PingController(SenderDao senders) {
 		this.senders = senders;
 	}
 	

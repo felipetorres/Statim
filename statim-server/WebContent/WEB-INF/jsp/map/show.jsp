@@ -22,7 +22,7 @@
 		            animation: google.maps.Animation.DROP,
 		            position: point
 		        });
-				bounds.extend(point)
+				bounds.extend(point);
 			};
 			mapShow.fitBounds(bounds);
         }
@@ -30,8 +30,16 @@
 </head>
 <body>
     <div id="map-canvas" style="width:100%;height:100%;"></div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
-		var points = [["${latitude}","${longitude}"]];
-        plot(points);
+    	var url = "http://192.168.84.122:8080/statim-server/map/json";
+    	var points = [];
+    	$.getJSON(url,function (json) {
+			$.each(json.coordenadas, function(i,item){
+				points.push([item.latitude, item.longitude])
+	  		});
+	        plot(points);
+		});
+	 //	var points = [["${latitude}","${longitude}"]];
     </script>
 </body>
