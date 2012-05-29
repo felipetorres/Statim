@@ -32,7 +32,7 @@
     <div id="map-canvas" style="width:100%;height:100%;"></div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
-    	var url = "http://192.168.84.122:8080/statim-server/map/json";
+    	var url = "http://192.168.84.122:8080/statim-server/map.json";
     	var points = [];
     	$.getJSON(url,function (json) {
 			$.each(json.coordenadas, function(i,item){
@@ -40,6 +40,5 @@
 	  		});
 	        plot(points);
 		});
-	 //	var points = [["${latitude}","${longitude}"]];
     </script>
 </body>
