@@ -51,7 +51,7 @@ public class C2DM_MessageReceiver extends BroadcastReceiver {
 		}
 	}
 	private void enviaPara(String ip, double lat, double lon) {
-		String url = StatimConstants.server_url + "/map/" + String.valueOf(lat) + "/" + String.valueOf(lon);
+		String url = StatimConstants.server_url + "/map/add/" + String.valueOf(lat) + "/" + String.valueOf(lon);
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext context = new BasicHttpContext();
 		HttpGet get = new HttpGet(url);
