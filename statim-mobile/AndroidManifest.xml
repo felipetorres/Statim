@@ -45,5 +45,7 @@
             </intent-filter>
         </receiver>
         
+        <service android:name="C2DM_CoordinateSender"></service>
+        
     </application>
 </manifest>
