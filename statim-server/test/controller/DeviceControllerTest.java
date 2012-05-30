@@ -12,8 +12,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.util.test.MockResult;
 import dao.DeviceDao;
 import dao.SenderDao;
 
@@ -21,13 +19,12 @@ public class DeviceControllerTest {
 
 	private @Mock DeviceDao devices;
 	private @Mock SenderDao senders;
-	private Result result = new MockResult();
 	private DeviceController controller;
 
 	@Before
 	public void setUp() throws Exception{
 		MockitoAnnotations.initMocks(this);
-		controller = new DeviceController(result, senders, devices);
+		controller = new DeviceController(senders, devices);
 	}
 	
 	@Test

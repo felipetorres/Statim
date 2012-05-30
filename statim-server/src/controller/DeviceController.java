@@ -4,19 +4,16 @@ import model.Device;
 import model.Sender;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
 import dao.DeviceDao;
 import dao.SenderDao;
 
 @Resource
 public class DeviceController {
 
-	private final Result result;
 	private final SenderDao senders;
 	private final DeviceDao devices;
 
-	public DeviceController(Result result, SenderDao senders, DeviceDao devices) {
-		this.result = result;
+	public DeviceController(SenderDao senders, DeviceDao devices) {
 		this.senders = senders;
 		this.devices = devices;
 	}
