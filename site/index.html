@@ -61,13 +61,13 @@
 					a otimização das rotas a um determinado destino. Para tanto, usaremos o GPS presente nos celulares que possuem o 
 					sistema operacional Android para o rastreamento dos motoboys, além do Google Maps para uma exibição dos pontos 
 					rastreados e da rota sugerida.</p>
-					<p>Durante o curso dessa implementação, serão descritos alguns algoritmos de otimização, com ênfase em algoritmos genéticos.</p>
+					<p>Durante a implementação, serão descritos alguns algoritmos de otimização, com ênfase em algoritmos genéticos.</p>
 
 					<h1>Objetivos</h1>
 					<ul>
-						<li>Desenvolver um sistema para otimizar as rotas dos motoboys até um ponto específico do mapa valendo-se de algumas 
-							funcionalidades disponíveis em celulares Android (como GPS e a integração com a API do Google Maps) e técnicas de 
-							otimização combinatória.</li>
+						<li>Desenvolver um sistema, usando práticas ágeis, para otimizar as rotas dos motoboys até um ponto específico do mapa 
+							valendo-se de algumas funcionalidades disponíveis em celulares Android (como GPS e a integração com a API do Google Maps) 
+							e técnicas de otimização combinatória.</li>
 						<li>Esperamos que esse programa possa se tornar um produto a ser comercializado por uma empresa (cuja criação será 
 							posterior à conclusão desse trabalho), usando técnicas de empreendedorismo vistas na matéria <em>PCS2590 - Criação e 
 							Administração de Empresas de Computação</em>.</li>
@@ -80,11 +80,48 @@
 						<li>Estudo e criação de aplicativos simples usando a plataforma Android.</li>
 						<li>Criação de blogs no Stoa (do <a href="http://noo.stoa.usp.br/fgtorres/blog" target="_blank">Felipe</a> e do <a href="http://noo.stoa.usp.br/shaka_vp/blog" target="_blank">Geraldo</a>) sobre as atividades do trabalho.</li>
 						<li>Preparação do ambiente de desenvolvimento.</li>
-					</ul>
-				
-					<h1>Estrutura esperada da monografia</h1>
-				
+					
+					<h1>Cronograma de atividades</h1>
+
+					<h2>Statim Mobile (Maio, Junho)</h2>
 					<dl>
+						<dt>Core do sistema de cadastro do device.</dt>
+							<dd>Módulo para o envio do id do device para o Statim Server.</dd>
+						<dt>Tela amigável para o cadastro (e recadastro) do device.</dt>
+							<dd>Tela com botões para o envio e recadastro do id.</dd>
+					</dl>
+
+					<h2>Statim Server (Maio, Junho, Julho)</h2>
+					<dl>
+						<dt>CRUD para os devices e senders.</dt>
+							<dd>Módulo para cadastro e remoção dos ids dos devices usando VRaptor.</dd>
+						<dt>Ping para os devices.</dt>
+							<dd>Com os senders (e seus respectivos devices) cadastrados, faremos o sistema de ping usando o C2DM.</dd>
+						<dt>Interface de exibição e atualização das coordenadas dos devices.</dt>
+							<dd>No ping back dos devices, teremos um mapa (usando a API do Google Maps) que exibirá as coordenadas.</dd>
+							<dd>Como o ping back é um processo assíncrono, esse mapa consumirá um JSON que terá as coordenadas atualizadas.</dd>
+					</dl>
+
+					<h2>Otimizador de rotas (Agosto, Setembro, Outubro)</h2>
+					<dl>                            
+						<dt>Módulo inicial.</dt>
+							<dd>Determinar a melhor rota em linha reta, dada a posição do device.</dd>
+						<dt>Evolução do módulo inicial.</dt>    
+							<dd>Usando algoritmos genéticos, determinar a melhor rota em linha reta, considerando-se que os devices estarão em movimento.</dd>
+					</dl>
+
+					<h2>Monografia</h2>
+					<dl>
+						<dt>Fundamentos (Junho)</dt>
+						<dt>Statim Mobile (Junho)</dt>
+						<dt>Statim Server (Julho, Agosto, Setembro, Outubro)</dt>
+					</dl>
+
+					<h2>Poster (Outubro)</h2>
+					<h2>Apresentação (Novembro)</h2>
+					
+					<h1>Estrutura esperada da monografia</h1>
+				    <dl>
 					<dt>Resumo</dt>
 					<dt>Introdução</dt>
 						<dd>Contextualização</dd>
@@ -92,9 +129,14 @@
 					<dt>Fundamentos</dt>
 						<dd>Android</dd>
 						<dd>Google Maps</dd>
-					<dt>O algoritmo</dt>
+						<dd>C2DM: enviando mensagens de um computador para um dispositivo móvel</dd>
+					<dt>Statim Mobile</dt>
 						<dd>Descrição</dd>
-						<dd>Implementação</dd>
+						<dd>Arquitetura</dd>
+					<dt>Statim Server</dt>
+						<dd>Descrição</dd>
+						<dd>Arquitetura</dd>
+						<dd>Implementação do Otimizador de rotas</dd>
 					<dt>Análise dos resultados</dt>
 					<dt>Parte Subjetiva</dt>
 					</dl>
@@ -134,6 +176,8 @@
 							<dd><a href="pcs2590/HBR_Swot_Analysis_II_Strengths_and_Weaknesses.pdf" target="_blank">SWOT Analysis II: Looking Inside for Strengths and Weakness</a>.</dd>
 						<dt><a href="pcs2590/precificacao.pdf" target="_blank">Precificação</a> dos produtos. Essa precificação foi feita tendo em vista em conceitos encontrados em:</dt>
 							<dd><a href="pcs2590/Pricing_as_Entrepreneurial_Behavior.pdf" target="_blank">Pricing as Entrepreneurial Behavior</a>.</dd>
+						<dt><a href="pcs2590/cadeia_de_valor.pdf" target="_blank">Análise</a> segundo as idéias da cadeia de valor de Porter, de acordo com o fonte:</dt>
+							<dd><a href="pcs2590/The_Value_Chain_and_Competitive_Advantage.pdf" target="_blank">The value chain and competitive advantage</a>.</dd>
 					</dl>
 				</div>
 			</div>
@@ -157,7 +201,7 @@
 <script type="text/javascript" src="inc/js/collapse.js"></script>
 <script type="text/javascript">
 	animatedcollapse.addDiv('iniciobox', 'fade=0,speed=600,hide=1')
-	animatedcollapse.addDiv('propostabox', 'fade=0,speed=600,hide=1')
+	animatedcollapse.addDiv('propostabox', 'fade=0,speed=600,hide=0')
 	animatedcollapse.addDiv('monografiabox', 'fade=0,speed=600,hide=1')
 	animatedcollapse.addDiv('codigobox', 'fade=0,speed=600,hide=1')
 	animatedcollapse.addDiv('empreendedorismobox', 'fade=0,speed=600,hide=1')

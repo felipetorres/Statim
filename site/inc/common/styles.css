@@ -75,7 +75,12 @@ body {
 }
 
 #content h1 {
+	font-size: 18px;
 	padding: 25px 0;
+}
+
+#content h2 {
+	padding: 15px 0;
 }
 
 #content ul {
@@ -90,6 +95,8 @@ body {
 
 #content dd {
 	margin-bottom: 5px;
+	line-height: 20px;
+	text-align: justify;
 }
 
 #content p, #content li {
