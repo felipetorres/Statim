@@ -29,4 +29,8 @@ public class Device {
 	public String getRegistrationId() {
 		return this.registrationId;
 	}
+
+	public void setRegistrationId(String registrationId) {
+		this.registrationId = registrationId;
+	}
 }

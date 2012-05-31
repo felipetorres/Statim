@@ -21,9 +21,7 @@ public class DeviceController {
 	@Path("/new/{senderEmail}/{deviceRegistrationId}")
 	public void save(String senderEmail, String deviceRegistrationId) {
 		Sender sender = senders.findByEmail(senderEmail);
-		System.out.println("Verificando a existencia do sender...");
 		if(sender != null) {
-			System.out.println("Sender reconhecido.");
 			if(!devices.contains(deviceRegistrationId)) {
 				System.out.println("Device novo. Cadastrando...");
 				Device device = new Device(sender, deviceRegistrationId);
@@ -32,5 +30,11 @@ public class DeviceController {
 				System.out.println("Device já existe no banco.");
 			}
 		}
+	}
+	
+	@Path("/update/{oldDeviceRegistrationId}/{newDeviceRegistrationId}")
+	public void update(String oldDeviceRegistrationId, String newDeviceRegistrationId) {
+		System.out.println("Atualizando id do device...");
+		devices.update(oldDeviceRegistrationId, newDeviceRegistrationId);
 	}
 }

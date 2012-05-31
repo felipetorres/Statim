@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.List;
-
 import model.Device;
 
 import org.hibernate.Session;
@@ -23,7 +21,16 @@ public class DeviceDao {
 	}
 	
 	public boolean contains(String hash) {
-		List<Device> list = this.session.createCriteria(Device.class).add(Restrictions.eq("registrationId", hash)).list();
-		return !list.isEmpty();
+		return find(hash) != null;
+	}
+
+	public Device find(String hash) {
+		return (Device) this.session.createCriteria(Device.class).add(Restrictions.eq("registrationId", hash)).uniqueResult();
+	}
+	
+	public void update(String oldHash, String newHash) {
+		Device found = find(oldHash);
+		found.setRegistrationId(newHash);
+		session.update(found);
 	}
 }
