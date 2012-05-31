@@ -11,22 +11,22 @@ import br.com.caelum.vraptor.Result;
 public class MapController {
 
 	private final Result result;
-	private final CoordinateManager coordinates;
+	private final CoordinateManager manager;
 
 	public MapController(Result result, CoordinateManager coordinates) {
 		this.result = result;
-		this.coordinates = coordinates;
+		this.manager = coordinates;
 	}
 
 	@Path("/map/add/{latitude}/{longitude}")
 	public void addNewCoordinate(String latitude, String longitude) {
 		Coordinate coordinate = new Coordinate(Double.valueOf(latitude), Double.valueOf(longitude));
-		coordinates.add(coordinate);
+		manager.add(coordinate);
 	}
 
 	@Path("/map.json")
 	public void getJSON() {
-		result.use(json()).from(coordinates.getCoordinates(), "coordenadas").serialize();
+		result.use(json()).from(manager.getCoordinates(), "coordenadas").serialize();
 	}
 	
 	@Path("/map")
@@ -34,6 +34,6 @@ public class MapController {
 	
 	@Path("/map/clear")
 	public void clearJSON() {
-		coordinates.clear();
+		manager.clear();
 	}
 }

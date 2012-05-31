@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
 
@@ -27,21 +25,21 @@ public class PingController {
 	}
 	
 	@Path("/ping/{email}")
-	public void ping(String email) {
+	public int ping(String email) {
 		Sender sender = senders.findByEmail(email);
 		List<Device> devices = senders.findDevicesOf(sender);
 		System.out.println("Ping...");
 		for (Device device : devices) {
 			try {
-				pingDevice(sender, device);
+				return pingDevice(sender, device);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		return 0;
 	}
 
-	private int pingDevice(Sender sender, Device device)
-			throws MalformedURLException, IOException, ProtocolException {
+	private int pingDevice(Sender sender, Device device) throws IOException {
 		String data = "registration_id=" + device.getRegistrationId() 
 					+ "&collapse_key=0"
 					+ "&data.message=gps";
@@ -59,7 +57,6 @@ public class PingController {
 		out.write(data.getBytes());
 		out.close();
 		
-		System.out.println(connection.getResponseCode());
 		return connection.getResponseCode();
 	}
 	
