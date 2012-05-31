@@ -5,7 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import constants.StatimConstants;
+import constants.Constants;
 
 public class C2DM_Activity extends Activity {
  
@@ -23,7 +23,7 @@ public class C2DM_Activity extends Activity {
 		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
         
         intent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-        intent.putExtra("sender", StatimConstants.sender_email);
+        intent.putExtra("sender", Constants.sender_email);
         
         startService(intent);
 	}

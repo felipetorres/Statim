@@ -12,7 +12,7 @@ import org.apache.http.protocol.HttpContext;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import constants.StatimConstants;
+import constants.Constants;
 
 public class C2DM_CoordinateSender extends Service {
 	
@@ -28,7 +28,7 @@ public class C2DM_CoordinateSender extends Service {
 	}
 	
 	private void send(String lat, String lon) {
-		String url = StatimConstants.server_url + "/map/add/" + lat + "/" + lon;
+		String url = Constants.server_url + "/map/add/" + lat + "/" + lon;
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext context = new BasicHttpContext();
 		HttpGet get = new HttpGet(url);

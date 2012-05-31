@@ -3,7 +3,7 @@
       package="br.com.c2dm"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="7" />
+    <uses-sdk android:minSdkVersion="8" />
 
 
     <!-- Grant permission for this app to use the C2DM service. -->
