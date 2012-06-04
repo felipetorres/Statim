@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-beans</artifactId>
+  <version>3.0.5.RELEASE</version>
+  <versioning>
+    <versions>
+      <version>3.0.5.RELEASE</version>
+    </versions>
+    <lastUpdated>20120604221409</lastUpdated>
+  </versioning>
+</metadata>
