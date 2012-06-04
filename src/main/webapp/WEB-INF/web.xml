@@ -7,7 +7,7 @@
 
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
-		<param-value>br.com.caelum.vraptor.util.jpa</param-value>
+		<param-value>br.com.caelum.vraptor.util.hibernate</param-value>
 	</context-param>
 
 	<context-param>
@@ -15,11 +15,6 @@
 		<param-value>UTF-8</param-value>
 	</context-param>
 	
-	<context-param>
-  	    <param-name>br.com.caelum.vraptor.provider</param-name>
-  	    <param-value>br.com.caelum.vraptor.util.hibernate.HibernateCustomProvider</param-value>
-  	</context-param>
-
 	<filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
