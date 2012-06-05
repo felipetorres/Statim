@@ -29,4 +29,10 @@ public class SenderDao {
 	public List<Device> findDevicesOf(Sender sender) {
 		return this.session.createCriteria(Device.class).add(Restrictions.eq("sender", sender)).list();
 	}
+	
+	public void save(Sender sender) {
+		if(findByEmail(sender.getEmail()) == null) {
+			session.save(sender);
+		}
+	}
 }

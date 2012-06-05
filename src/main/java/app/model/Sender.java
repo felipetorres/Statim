@@ -19,6 +19,15 @@ public class Sender {
 	public Object getId() {
 		return this.id;
 	}
+	
+	public Sender() {
+		// TODO hibernate requires
+	}
+	
+	public Sender(String email, String hash) {
+		this.email = email;
+		this.hash = hash;
+	}
 
 	public String getEmail() {
 		return this.email;
