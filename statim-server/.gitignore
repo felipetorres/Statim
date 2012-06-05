@@ -1,2 +1,2 @@
-build/classes
-WebContent/WEB-INF/classes
+target/
+src/main/webapp/WEB-INF/classes/
