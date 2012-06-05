@@ -26,7 +26,7 @@ public class MapController {
 
 	@Path("/map.json")
 	public void getJSON() {
-		result.use(json()).from(manager.getCoordinates(), "coordenadas").serialize();
+		result.use(json()).withoutRoot().from(manager.getCoordinates()).serialize();
 	}
 	
 	@Path("/map")
