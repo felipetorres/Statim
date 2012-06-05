@@ -48,7 +48,7 @@
     	setInterval(function() {
 	    	var points = [];
 	    	$.getJSON(url,function (json) {
-				$.each(json.coordinate, function(i,item){
+				$.each(json.coordenadas, function(i,item){
 					points.push([item.latitude, item.longitude])
 		  		});
 				clear(markers);
