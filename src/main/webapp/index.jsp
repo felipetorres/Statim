@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>VRaptor Scaffold Project</title>
+	<title>Statim</title>
 </head>
 <body>
 	It works!!
