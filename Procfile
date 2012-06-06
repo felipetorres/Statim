@@ -1,1 +1,1 @@
-web: sh target/bin/webapp
+web: sh statim-server/target/bin/webapp
