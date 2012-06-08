@@ -3,8 +3,10 @@
     <style type="text/css">
         html { height: 100%; }
         body { height: 100%; margin: 0; padding: 0; }
-        #map { height: 400px; }
-        button { display: block; margin-bottom: 20px; width: 150px; padding: 5px 0;}
+        #panel button { width: 150px; margin-left: 15px; vertical-align: top; margin-top: 15px;}
+        #panel img { margin-top: 5px;}
+        #panel { height: 10%; min-height: 50px;}
+        #map-canvas { width:100%; height:90%;}
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
@@ -40,11 +42,12 @@
     </script>
 </head>
 <body>
-    <div id="map-canvas" style="width:80%;height:100%;float:left;"></div>
-    <div id=panel style="float:left;">
+    <div id="panel">
+		<img src="images/statim.png"/>
     	<button onclick="/map/clear">Limpar mapa</button>
     	<button onclick="/ping/felipe.gtorres@gmail.com">Localizar aparelhos</button>
     </div>
+    <div id="map-canvas"></div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
     	var url = "./map.json";
