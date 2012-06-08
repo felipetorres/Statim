@@ -3,7 +3,8 @@
     <style type="text/css">
         html { height: 100%; }
         body { height: 100%; margin: 0; padding: 0; }
-        #panel button { width: 150px; margin-left: 15px; vertical-align: top; margin-top: 15px;}
+        form { display: inline; }
+        button { width: 150px; margin-left: 15px; vertical-align: top; margin-top: 15px;}
         #panel img { margin-top: 5px;}
         #panel { height: 10%; min-height: 50px;}
         #map-canvas { width:100%; height:90%;}
@@ -39,13 +40,16 @@
 		        markers[i].setMap(null);
         	}; 
         }
+        function acessa(url) {
+        	$.get(url)
+        }
     </script>
 </head>
 <body>
     <div id="panel">
 		<img src="images/statim.png"/>
-    	<button onclick="/map/clear">Limpar mapa</button>
-    	<button onclick="/ping/felipe.gtorres@gmail.com">Localizar aparelhos</button>
+		<button onclick="acessa('./map/clear');">Limpar mapa</button>
+    	<button onclick="acessa('./ping/felipe.gtorres@gmail.com')">Localizar aparelhos</button>
     </div>
     <div id="map-canvas"></div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
