@@ -8,6 +8,7 @@
 		<img src="images/statim.png"/>
 		<button onclick="acessa('map/clear');">Limpar mapa</button>
     	<button onclick="acessa('ping/felipe.gtorres@gmail.com')">Localizar aparelhos</button>
+    	<input type="checkbox" id="autoZoom" name="autoZoom"><label for="autoZoom">Desabilitar zoom autom&aacute;tico</label>
     </div>
     <div id="map-canvas"></div>
 

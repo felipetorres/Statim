@@ -20,7 +20,10 @@ function plot(points, mapShow, bounds) {
 		bounds.extend(point);
 		markers.push(marker);
 	};
-	mapShow.fitBounds(bounds);
+	var check = document.getElementById("autoZoom");
+	if(!check.checked) { 
+		mapShow.fitBounds(bounds);
+	}
 	return markers;
 }
 
