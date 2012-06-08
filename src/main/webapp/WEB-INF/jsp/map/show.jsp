@@ -4,6 +4,7 @@
         html { height: 100%; }
         body { height: 100%; margin: 0; padding: 0; }
         #map { height: 400px; }
+        button { display: block; margin-bottom: 20px; width: 150px; padding: 5px 0;}
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
@@ -39,7 +40,11 @@
     </script>
 </head>
 <body>
-    <div id="map-canvas" style="width:100%;height:100%;"></div>
+    <div id="map-canvas" style="width:80%;height:100%;float:left;"></div>
+    <div id=panel style="float:left;">
+    	<button onclick="/map/clear">Limpar mapa</button>
+    	<button onclick="/ping/felipe.gtorres@gmail.com">Localizar aparelhos</button>
+    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
     	var url = "./map.json";
