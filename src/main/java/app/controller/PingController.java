@@ -25,7 +25,7 @@ public class PingController {
 	}
 	
 	@Path("/ping/{email}")
-	public int ping(String email) {
+	public void ping(String email) {
 		Sender sender = senders.findByEmail(email);
 		List<Device> devices = senders.findDevicesOf(sender);
 		System.out.println("Ping...");
@@ -36,7 +36,6 @@ public class PingController {
 				e.printStackTrace();
 			}
 		}
-		return 0;
 	}
 
 	private int pingDevice(Sender sender, Device device) throws IOException {
