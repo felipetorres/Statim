@@ -31,7 +31,7 @@ public class PingController {
 		System.out.println("Ping...");
 		for (Device device : devices) {
 			try {
-				return pingDevice(sender, device);
+				pingDevice(sender, device);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
