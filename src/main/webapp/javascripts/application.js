@@ -5,7 +5,19 @@ function create() {
                      };
     var mapShow = new google.maps.Map(mapCanvas, mapOptions);
 	var bounds = new google.maps.LatLngBounds();
+	
+	google.maps.event.addListener(mapShow, 'click', function(event) {
+		locationMarker(event.latLng);
+	});
+	
 	return [mapShow, bounds];
+}
+
+function locationMarker(location) {
+    var marker = new google.maps.Marker({
+        map: mapShow,
+        position: location
+    });
 }
 
 function plot(points, mapShow, bounds) {
