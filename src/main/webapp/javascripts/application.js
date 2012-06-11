@@ -20,7 +20,8 @@ function locationMarker(location, map, markers) {
 	var flag = 'images/flag.png'
     var marker = new google.maps.Marker({
         map: map,
-        icon: flag, 
+        icon: flag,
+        animation: google.maps.Animation.DROP,
         position: location
     });
 	return marker;
