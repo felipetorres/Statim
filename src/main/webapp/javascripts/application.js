@@ -8,8 +8,8 @@ function create() {
 	var markers = [];
 	
 	google.maps.event.addListener(mapShow, 'click', function(event) {
-		locationMarker(event.latLng, mapShow, markers);
-		markers.push(event.latLng);
+		var marker = locationMarker(event.latLng, mapShow, markers);
+		markers.push(marker);
 	});
 	
 	return [mapShow, bounds];
@@ -23,6 +23,7 @@ function locationMarker(location, map, markers) {
         image: flag, 
         position: location
     });
+	return marker;
 }
 
 function plot(points, mapShow, bounds) {
