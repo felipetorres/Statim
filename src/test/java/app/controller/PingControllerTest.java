@@ -1,6 +1,6 @@
 package app.controller;
 
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -15,16 +15,19 @@ import org.mockito.MockitoAnnotations;
 import app.dao.SenderDao;
 import app.model.Device;
 import app.model.Sender;
+import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.util.test.MockResult;
 
 public class PingControllerTest {
 
 	private @Mock SenderDao senders;
+	private @Mock Result result = new MockResult();
 	private PingController controller;
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		controller = new PingController(senders);
+		controller = new PingController(senders, result);
 	}
 	
 	@Test
@@ -39,7 +42,9 @@ public class PingControllerTest {
 		when(senders.findByEmail("sender@email.com")).thenReturn(senderMock);
 		when(senders.findDevicesOf(senderMock)).thenReturn(devices);
 		
-		assertEquals(401, controller.ping("sender@email.com"));
+		controller.ping("sender@email.com");
+		
+		verify(result).nothing();
 	}
 	
 	private List<Device> addADeviceWith(Sender sender, String registrationId, List<Device> devices) {

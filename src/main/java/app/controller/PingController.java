@@ -1,5 +1,7 @@
 package app.controller;
 
+import static br.com.caelum.vraptor.view.Results.status;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
@@ -14,14 +16,17 @@ import app.model.Device;
 import app.model.Sender;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.Result;
 
 @Resource
 public class PingController {
 
 	private final SenderDao senders;
+	private final Result result;
 
-	public PingController(SenderDao senders) {
+	public PingController(SenderDao senders, Result result) {
 		this.senders = senders;
+		this.result = result;
 	}
 	
 	@Path("/ping/{email}")
@@ -34,11 +39,13 @@ public class PingController {
 				pingDevice(sender, device);
 			} catch (IOException e) {
 				e.printStackTrace();
+				result.use(status()).badRequest("Problem when ping: " + sender.getEmail() + " " + device.getRegistrationId());
 			}
 		}
+		result.nothing();
 	}
 
-	private int pingDevice(Sender sender, Device device) throws IOException {
+	public int pingDevice(Sender sender, Device device) throws IOException {
 		String data = "registration_id=" + device.getRegistrationId() 
 					+ "&collapse_key=0"
 					+ "&data.message=gps";
