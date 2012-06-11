@@ -5,17 +5,22 @@ function create() {
                      };
     var mapShow = new google.maps.Map(mapCanvas, mapOptions);
 	var bounds = new google.maps.LatLngBounds();
+	var markers = [];
 	
 	google.maps.event.addListener(mapShow, 'click', function(event) {
-		locationMarker(event.latLng, mapShow);
+		locationMarker(event.latLng, mapShow, markers);
 	});
+	markers.push(event.latLng);
 	
 	return [mapShow, bounds];
 }
 
-function locationMarker(location, map) {
+function locationMarker(location, map, markers) {
+	clear(markers);
+	var flag = 'images/flag.png'
     var marker = new google.maps.Marker({
         map: map,
+        image: flag, 
         position: location
     });
 }
