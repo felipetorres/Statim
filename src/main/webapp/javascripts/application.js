@@ -9,8 +9,8 @@ function create() {
 	
 	google.maps.event.addListener(mapShow, 'click', function(event) {
 		locationMarker(event.latLng, mapShow, markers);
+		markers.push(event.latLng);
 	});
-	markers.push(event.latLng);
 	
 	return [mapShow, bounds];
 }
