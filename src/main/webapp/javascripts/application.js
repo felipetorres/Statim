@@ -7,15 +7,15 @@ function create() {
 	var bounds = new google.maps.LatLngBounds();
 	
 	google.maps.event.addListener(mapShow, 'click', function(event) {
-		locationMarker(event.latLng);
+		locationMarker(event.latLng, mapShow);
 	});
 	
 	return [mapShow, bounds];
 }
 
-function locationMarker(location) {
+function locationMarker(location, map) {
     var marker = new google.maps.Marker({
-        map: mapShow,
+        map: map,
         position: location
     });
 }
