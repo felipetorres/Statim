@@ -1,22 +1,54 @@
+var service = new google.maps.DirectionsService();
+var renderer;
+var renderers = [];
+var markers = [];
+var mapShow;
+
+function calculateRoute(origin, destination) {
+	var request = {
+		origin: origin,
+		destination: destination,
+		travelMode: google.maps.TravelMode.DRIVING	
+	};
+	service.route(request, function(response, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+			renderer = new google.maps.DirectionsRenderer();
+			renderer.setMap(mapShow);
+	    	renderer.setDirections(response);
+	    	renderers.push(renderer);
+	    }
+	});
+}
+
+function calculateRouteBetween(points, destination) {
+	for(var i=0;i<renderers.length;i++){
+		renderers[i].setMap(null);
+	}
+	for(var i=0;i<points.length;i++){
+		calculateRoute(points[i].getPosition(), destination);
+	}
+}
+
 function create() {
     var mapCanvas = document.getElementById("map-canvas");
     var mapOptions = { zoom: 16,
                        mapTypeId: google.maps.MapTypeId.HYBRID
                      };
-    var mapShow = new google.maps.Map(mapCanvas, mapOptions);
+    mapShow = new google.maps.Map(mapCanvas, mapOptions);
 	var bounds = new google.maps.LatLngBounds();
-	var markers = [];
+	var destinationMarkers = [];
 	
 	google.maps.event.addListener(mapShow, 'click', function(event) {
-		var marker = locationMarker(event.latLng, mapShow, markers);
-		markers.push(marker);
+		var marker = locationMarker(event.latLng, mapShow, destinationMarkers);
+		calculateRouteBetween(markers, event.latLng);
+		destinationMarkers.push(marker);
 	});
 	
 	return [mapShow, bounds];
 }
 
 function locationMarker(location, map, markers) {
-	clear(markers);
+	clear(markers)
 	var flag = 'images/flag.png'
     var marker = new google.maps.Marker({
         map: map,
@@ -28,7 +60,6 @@ function locationMarker(location, map, markers) {
 }
 
 function plot(points, mapShow, bounds) {
-	var markers = [];
 	for (var i=0;i<points.length;i++) {
 		point = new google.maps.LatLng(points[i][0],points[i][1]);
         marker = new google.maps.Marker({
@@ -39,6 +70,8 @@ function plot(points, mapShow, bounds) {
 		bounds.extend(point);
 		markers.push(marker);
 	};
+	
+	
 	var check = document.getElementById("autoZoom");
 	if(!check.checked) { 
 		mapShow.fitBounds(bounds);
