@@ -13,6 +13,7 @@ function calculateRoute(origin, destination) {
 	service.route(request, function(response, status) {
 		if (status == google.maps.DirectionsStatus.OK) {
 			renderer = new google.maps.DirectionsRenderer();
+			renderer.suppressMarkers = true;
 			renderer.setMap(mapShow);
 	    	renderer.setDirections(response);
 	    	renderers.push(renderer);
