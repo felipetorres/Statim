@@ -6,18 +6,21 @@
 <body>
     <div id="panel">
 		<img src="images/statim.png"/>
-		<button onclick="acessa('map/clear');">Limpar mapa</button>
-    	<button onclick="acessa('ping/felipe.gtorres@gmail.com')">Localizar aparelhos</button>
+    	<button id="localizar">Localizar aparelhos</button>
     	<div id="option">
     		<label><input type="checkbox" id="autoZoom"/>Desabilitar zoom autom&aacute;tico</label>
     	</div>
+   		<input type="text" id="endereco">
+   		<button id="gerarRotas">Gerar rotas</button>
     </div>
     <div id="map-canvas"></div>
 
     <script src="javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/route.js"></script>
+    <script type="text/javascript" src="javascripts/plot.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
     <script type="text/javascript">
-    	var map = create();
+    	var map = createMap();
     	var markers = [];
     	drawPointsOnMap("map.json", markers, map);
     </script>
