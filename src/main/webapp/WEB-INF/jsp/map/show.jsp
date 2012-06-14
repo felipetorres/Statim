@@ -17,18 +17,8 @@
     <script src="javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
     <script type="text/javascript">
-    	var url = "map.json";
     	var map = create();
     	var markers = [];
-    	setInterval(function() {
-	    	var points = [];
-	    	$.getJSON(url,function (json) {
-				$.each(json.coordenadas, function(i,item){
-					points.push([item.latitude, item.longitude])
-		  		});
-				clear(markers);
-		        markers = plot(points, map[0], map[1]);
-			});
-    	}, 10000);
+    	drawPointsOnMap("map.json", markers, map);
     </script>
 </body>

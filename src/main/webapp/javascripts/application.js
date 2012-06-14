@@ -72,7 +72,6 @@ function plot(points, mapShow, bounds) {
 		markers.push(marker);
 	};
 	
-	
 	var check = document.getElementById("autoZoom");
 	if(!check.checked) { 
 		mapShow.fitBounds(bounds);
@@ -84,6 +83,18 @@ function clear(markers) {
 	for (var i=0;i<markers.length;i++) {
         markers[i].setMap(null);
 	}; 
+}
+
+function drawPointsOnMap(url, markerList, map) {
+    var points = [];
+    $.getJSON(url,function (json) {
+            $.each(json.coordenadas, function(i,item){
+                    points.push([item.latitude, item.longitude])
+            });
+            clear(markerList);
+            markerList = plot(points, map[0], map[1]);
+    });
+    setTimeout(function (){ drawPointsOnMap(url, markerList, map); } ,10000);
 }
 
 function acessa(url) {
