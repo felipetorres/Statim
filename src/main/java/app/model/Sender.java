@@ -36,5 +36,13 @@ public class Sender {
 	public String getHash() {
 		return this.hash;
 	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }

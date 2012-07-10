@@ -27,4 +27,13 @@ public class SenderControllerTest {
 		controller.save("sender@email.com", "aSenderHash");
 		verify(senders).save(any(Sender.class));
 	}
+	
+	@Test
+	public void shouldUpdateSender() throws Exception {
+		String senderEmail = "sender@email.com";
+
+		controller.update(senderEmail, "aNewHash");
+		
+		verify(senders).update(senderEmail, "aNewHash");
+	}
 }

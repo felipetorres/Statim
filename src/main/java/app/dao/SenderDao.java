@@ -35,4 +35,12 @@ public class SenderDao {
 			session.save(sender);
 		}
 	}
+
+	public void update(String email, String hash) {
+		Sender found = findByEmail(email);
+		if(found != null) {
+			found.setHash(hash);
+			session.update(found);
+		}
+	}
 }

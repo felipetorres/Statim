@@ -50,7 +50,7 @@ public class PingController {
 					+ "&collapse_key=0"
 					+ "&data.message=gps";
 		
-		URL url = new URL("https://android.apis.google.com/c2dm/send");
+		URL url = new URL("https://android.googleapis.com/gcm/send");
 		HttpsURLConnection.setDefaultHostnameVerifier(new CustomizedHostnameVerifier());
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 		connection.setDoOutput(true);
@@ -58,7 +58,7 @@ public class PingController {
 		connection.setRequestMethod("POST");
 		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF=8");
 		connection.setRequestProperty("Content-Length",Integer.toString(data.length()));
-		connection.setRequestProperty("Authorization", "GoogleLogin auth=" + sender.getHash());
+		connection.setRequestProperty("Authorization", "key=" + sender.getHash());
 		OutputStream out = connection.getOutputStream();
 		out.write(data.getBytes());
 		out.close();

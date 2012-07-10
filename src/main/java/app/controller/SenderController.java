@@ -19,4 +19,9 @@ public class SenderController {
 		Sender sender = new Sender(email, hash);
 		senders.save(sender);
 	}
+	
+	@Path("/sender/update/{email}/{hash}")
+	public void update(String email, String hash) {
+		senders.update(email, hash);
+	}
 }
