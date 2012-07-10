@@ -59,6 +59,7 @@ public class PingController {
 		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF=8");
 		connection.setRequestProperty("Content-Length",Integer.toString(data.length()));
 		connection.setRequestProperty("Authorization", "key=" + sender.getHash());
+		System.out.println("Hash: " + sender.getHash());
 		OutputStream out = connection.getOutputStream();
 		out.write(data.getBytes());
 		out.close();
