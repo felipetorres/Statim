@@ -3,7 +3,7 @@ package app.controller;
 import static br.com.caelum.vraptor.view.Results.status;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
@@ -61,11 +61,10 @@ public class PingController {
 		connection.setRequestProperty("Authorization", "key=" + sender.getHash());
 		System.out.println("Hash: " + sender.getHash());
 		System.out.println("Device: " + device.getRegistrationId());
-		OutputStream out = connection.getOutputStream();
-		out.write(data.getBytes());
-		out.close();
 		
-		System.out.println(connection.getResponseCode());
+		InputStream content = connection.getInputStream();
+
+		System.out.println("Resposta: " + content.toString());
 		
 		return connection.getResponseCode();
 	}
