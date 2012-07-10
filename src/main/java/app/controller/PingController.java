@@ -65,6 +65,8 @@ public class PingController {
 		out.write(data.getBytes());
 		out.close();
 		
+		System.out.println(out.toString());
+		
 		return connection.getResponseCode();
 	}
 	
