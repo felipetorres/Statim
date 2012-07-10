@@ -32,4 +32,11 @@ public class DeviceDao {
 		found.setRegistrationId(newHash);
 		session.update(found);
 	}
+
+	public void delete(Device device) {
+		Device found = find(device.getRegistrationId());
+		if(found != null) {
+			session.delete(found);
+		}
+	}
 }

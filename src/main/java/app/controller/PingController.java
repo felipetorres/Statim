@@ -14,6 +14,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
+import app.dao.DeviceDao;
 import app.dao.SenderDao;
 import app.model.Device;
 import app.model.Sender;
@@ -24,10 +25,12 @@ import br.com.caelum.vraptor.Result;
 @Resource
 public class PingController {
 
+	private final DeviceDao devices;
 	private final SenderDao senders;
 	private final Result result;
 
-	public PingController(SenderDao senders, Result result) {
+	public PingController(DeviceDao devices, SenderDao senders, Result result) {
+		this.devices = devices;
 		this.senders = senders;
 		this.result = result;
 	}
@@ -68,18 +71,27 @@ public class PingController {
 		out.write(data.getBytes());
 		out.close();
 		
+		parseResponseFrom(connection, device);
+		
+		return connection.getResponseCode();
+	}
+
+	private void parseResponseFrom(HttpsURLConnection connection, Device device)
+			throws IOException {
 		InputStream inputStream = connection.getInputStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		
 		StringBuilder response = new StringBuilder();
 		String line = "";
 		while((line = reader.readLine()) != null) {
-			response.append(line);
+			if(line.startsWith("id=")) {
+				return;
+			} else {
+				devices.delete(device);
+			}
 		}
 		
 		System.out.println("Resposta: " + response.toString());
-		
-		return connection.getResponseCode();
 	}
 	
 	private static class CustomizedHostnameVerifier implements HostnameVerifier {
