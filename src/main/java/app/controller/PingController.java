@@ -2,7 +2,10 @@ package app.controller;
 
 import static br.com.caelum.vraptor.view.Results.status;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.List;
@@ -65,7 +68,16 @@ public class PingController {
 		out.write(data.getBytes());
 		out.close();
 		
-		System.out.println("Resposta: " + connection.getInputStream().toString());
+		InputStream inputStream = connection.getInputStream();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+		
+		StringBuilder response = new StringBuilder();
+		String line = "";
+		while((line = reader.readLine()) != null) {
+			response.append(line);
+		}
+		
+		System.out.println("Resposta: " + response.toString());
 		
 		return connection.getResponseCode();
 	}
