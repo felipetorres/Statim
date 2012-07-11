@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import app.dao.DeviceDao;
 import app.dao.SenderDao;
 import app.model.Device;
 import app.model.Sender;
@@ -22,12 +23,13 @@ public class PingControllerTest {
 
 	private @Mock SenderDao senders;
 	private @Mock Result result = new MockResult();
+	private @Mock DeviceDao devices;
 	private PingController controller;
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		controller = new PingController(senders, result);
+		controller = new PingController(devices, senders, result);
 	}
 	
 	@Test

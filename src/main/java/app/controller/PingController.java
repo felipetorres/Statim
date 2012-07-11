@@ -71,7 +71,11 @@ public class PingController {
 		out.write(data.getBytes());
 		out.close();
 		
-		parseResponseFrom(connection, device);
+		try {
+			parseResponseFrom(connection, device);
+		} catch (IOException e) {
+			
+		}
 		
 		return connection.getResponseCode();
 	}
@@ -81,7 +85,6 @@ public class PingController {
 		InputStream inputStream = connection.getInputStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		
-		StringBuilder response = new StringBuilder();
 		String line = "";
 		while((line = reader.readLine()) != null) {
 			if(line.startsWith("id=")) {
@@ -90,8 +93,6 @@ public class PingController {
 				devices.delete(device);
 			}
 		}
-		
-		System.out.println("Resposta: " + response.toString());
 	}
 	
 	private static class CustomizedHostnameVerifier implements HostnameVerifier {
