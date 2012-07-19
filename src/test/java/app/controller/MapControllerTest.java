@@ -1,8 +1,11 @@
 package app.controller;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -21,6 +24,18 @@ public class MapControllerTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		controller = new MapController(request, result, manager);
+	}
+	
+	@Test
+	public void shouldParseCorrectyIgnoringTheLastComma() throws Exception {
+		String bla = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino, 1234\"]";
+		
+		String[] strings = controller.parse(bla);
+		
+		assertEquals(strings[0], "-23.588104933333337");
+		assertEquals(strings[1], "-46.632236299999995");
+		assertEquals(strings[2], "Rua do Proximo Destino, 1234");
+		
 	}
 	
 //	@Test

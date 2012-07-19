@@ -27,7 +27,7 @@ public class MapController {
 	@Path("/map/addcoordinate")
 	public void addNewCoordinate() throws IOException {
 		String json = request.getReader().readLine();
-		String[] coordinates = json.replace("[", "").replace("]", "").split(",");
+		String[] coordinates = parse(json);
 		
 		String latitude = coordinates[0];
 		String longitude = coordinates[1];
@@ -35,6 +35,10 @@ public class MapController {
 		
 		Coordinate coordinate = new Coordinate(Double.valueOf(latitude), Double.valueOf(longitude));
 		manager.add(coordinate);
+	}
+
+	public String[] parse(String json) {
+		return json.replace("\"", "").replace("[", "").replace("]", "").split(",", 3);
 	}
 
 	@Path("/map.json")
