@@ -22,7 +22,7 @@ public class MapControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		controller = new MapController(result, manager);
+		controller = new MapController(null, result, manager);
 	}
 	
 	@Test

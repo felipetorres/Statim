@@ -1,5 +1,10 @@
 package app.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import app.model.Coordinate;
 import app.model.CoordinateManager;
 import br.com.caelum.vraptor.Path;
@@ -12,14 +17,31 @@ public class MapController {
 
 	private final Result result;
 	private final CoordinateManager manager;
+	private final HttpServletRequest request;
 
-	public MapController(Result result, CoordinateManager coordinates) {
+	public MapController(HttpServletRequest request, Result result, CoordinateManager coordinates) {
+		this.request = request;
 		this.result = result;
 		this.manager = coordinates;
+	}
+	
+	@Path("/map/addcoordinate")
+	public void teste() {
+		
+		try {
+		BufferedReader reader = request.getReader();
+		String line = "";
+			while((line = reader.readLine()) != null) {
+				System.out.println(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Path("/map/add/{latitude}/{longitude}")
 	public void addNewCoordinate(String latitude, String longitude) {
+		
 		Coordinate coordinate = new Coordinate(Double.valueOf(latitude), Double.valueOf(longitude));
 		manager.add(coordinate);
 	}
