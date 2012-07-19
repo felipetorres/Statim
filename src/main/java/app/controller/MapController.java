@@ -1,6 +1,5 @@
 package app.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,21 +25,13 @@ public class MapController {
 	}
 	
 	@Path("/map/addcoordinate")
-	public void teste() {
+	public void addNewCoordinate() throws IOException {
+		String json = request.getReader().readLine();
+		String[] coordinates = json.replace("[", "").replace("]", "").split(",");
 		
-		try {
-		BufferedReader reader = request.getReader();
-		String line = "";
-			while((line = reader.readLine()) != null) {
-				System.out.println(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Path("/map/add/{latitude}/{longitude}")
-	public void addNewCoordinate(String latitude, String longitude) {
+		String latitude = coordinates[0];
+		String longitude = coordinates[1];
+		String proximoEndereco = coordinates[2];
 		
 		Coordinate coordinate = new Coordinate(Double.valueOf(latitude), Double.valueOf(longitude));
 		manager.add(coordinate);
