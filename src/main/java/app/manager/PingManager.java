@@ -27,12 +27,12 @@ public class PingManager {
 
 	public int ping(Device device, String message) throws IOException {
 		String data = "{ "
-					+ "\"registration_ids\": [" + device.getRegistrationId() + "]," 
+					+ "\"registration_ids\": [\"" + device.getRegistrationId() + "\"]," 
 					+ "\"collapse_key\": 0,"
 					+ "\"data\": " + message 
 					+ "}";
 		
-		System.out.println(data);
+		System.out.println(data);	
 		
 		URL url = new URL("https://android.googleapis.com/gcm/send");
 		HttpsURLConnection.setDefaultHostnameVerifier(new CustomizedHostnameVerifier());

@@ -5,6 +5,7 @@ import app.dao.SenderDao;
 import app.model.Device;
 import app.model.Sender;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 
 @Resource
@@ -18,7 +19,7 @@ public class DeviceController {
 		this.devices = devices;
 	}
 	
-	@Path("/new/{senderEmail}/{deviceName}/{deviceRegistrationId}")
+	@Post("/new/{senderEmail}/{deviceName}/{deviceRegistrationId}")
 	public void save(String senderEmail, String deviceName, String deviceRegistrationId) {
 		Sender sender = senders.findByEmail(senderEmail);
 		if(sender != null) {
