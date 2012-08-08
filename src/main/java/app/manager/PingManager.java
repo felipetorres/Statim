@@ -28,7 +28,6 @@ public class PingManager {
 	public int ping(Device device, String message) throws IOException {
 		String data = "{ "
 					+ "\"registration_ids\": [\"" + device.getRegistrationId() + "\"]," 
-					+ "\"collapse_key\": 0,"
 					+ "\"data\": " + message 
 					+ "}";
 		
@@ -40,8 +39,7 @@ public class PingManager {
 		connection.setDoOutput(true);
 		connection.setUseCaches(false);
 		connection.setRequestMethod("POST");
-		connection.setRequestProperty("Content-Type", "application/json");
-		connection.setRequestProperty("Content-Length",Integer.toString(data.length()));
+		connection.setRequestProperty("Content-Type", "application/json ; charset=utf-8");
 		connection.setRequestProperty("Authorization", "key=" + sender.getHash());
 		System.out.println("Hash: " + sender.getHash());
 		System.out.println("Device: " + device.getRegistrationId());
@@ -54,7 +52,6 @@ public class PingManager {
 		} catch (IOException e) {
 			
 		}
-		
 		return connection.getResponseCode();
 	}
 	
@@ -62,7 +59,7 @@ public class PingManager {
 			throws IOException {
 		InputStream inputStream = connection.getInputStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		
+
 		String line = "";
 		while((line = reader.readLine()) != null) {
 			if(line.startsWith("id=")) {
