@@ -5,7 +5,7 @@
 
 <body>
 	<div>
-		<form action="">
+		<form action="" method="post">
 			<select>
 	 			<c:forEach items="${devices}" var="device">
 					<option value="${device.id}">${device.name}</option>
