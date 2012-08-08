@@ -11,7 +11,7 @@ import app.manager.PingManager;
 import app.model.Address;
 import app.model.Device;
 import app.model.Sender;
-import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
@@ -35,7 +35,7 @@ public class ItineraryController {
 		result.include("devices", senders.findDevicesOf(sender));
 	}
 	
-	@Path("/itinerary/sendTo/{deviceId}")
+	@Post("/itinerary/sendTo/{deviceId}")
 	public void sendTo(String deviceId, List<Address> itinerary) {
 		Device device = devices.findById(Long.valueOf(deviceId));
 		Sender sender = senders.findByEmail(Constants.email);

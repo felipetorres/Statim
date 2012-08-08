@@ -60,14 +60,11 @@ public class PingManager {
 		InputStream inputStream = connection.getInputStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-		String line = "";
-		while((line = reader.readLine()) != null) {
-			System.out.println(line);
-//			if(line.startsWith("id=")) {
-//				return;
-//			} else {
-//				devices.delete(device);
-//			}
+		String line = reader.readLine();
+		if(line.contains("\"success\":1,\"failure\":0")) {
+			return;
+		} else {
+			devices.delete(device);
 		}
 	}
 	
