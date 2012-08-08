@@ -50,7 +50,7 @@ public class PingControllerTest {
 	}
 	
 	private List<Device> addADeviceWith(Sender sender, String registrationId, List<Device> devices) {
-		devices.add(new Device(sender, registrationId));
+		devices.add(new Device(sender, "",registrationId));
 		return devices;
 	}
 }

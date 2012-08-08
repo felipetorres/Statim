@@ -12,6 +12,8 @@ public class Device {
 	@GeneratedValue
 	private long id;
 	
+	private String name;
+	
 	@ManyToOne
 	private Sender sender;
 	
@@ -21,8 +23,9 @@ public class Device {
 		// TODO hibernate requires
 	}
 	
-	public Device(Sender sender, String registrationId) {
+	public Device(Sender sender, String name,String registrationId) {
 		this.sender = sender;
+		this.name = name;
 		this.registrationId = registrationId;
 	}
 
@@ -32,5 +35,13 @@ public class Device {
 
 	public void setRegistrationId(String registrationId) {
 		this.registrationId = registrationId;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

@@ -18,13 +18,13 @@ public class DeviceController {
 		this.devices = devices;
 	}
 	
-	@Path("/new/{senderEmail}/{deviceRegistrationId}")
-	public void save(String senderEmail, String deviceRegistrationId) {
+	@Path("/new/{senderEmail}/{deviceName}/{deviceRegistrationId}")
+	public void save(String senderEmail, String deviceName, String deviceRegistrationId) {
 		Sender sender = senders.findByEmail(senderEmail);
 		if(sender != null) {
 			if(!devices.contains(deviceRegistrationId)) {
 				System.out.println("Device novo. Cadastrando...");
-				Device device = new Device(sender, deviceRegistrationId);
+				Device device = new Device(sender, deviceName, deviceRegistrationId);
 				devices.save(device);
 			} else {
 				System.out.println("Device já existe no banco.");

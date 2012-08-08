@@ -14,8 +14,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import app.manager.CoordinateManager;
 import app.model.Coordinate;
-import app.model.CoordinateManager;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 

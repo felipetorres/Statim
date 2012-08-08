@@ -31,7 +31,7 @@ public class DeviceControllerTest {
 	public void shouldSaveNewDevice() throws Exception {
 		Sender sender = new Sender();
 		when(senders.findByEmail("sender@email.com")).thenReturn(sender);
-		controller.save("sender@email.com", "deviceRegistrationHash");
+		controller.save("sender@email.com", "", "deviceRegistrationHash");
 		verify(devices).save(Mockito.any(Device.class));
 	}
 	
@@ -40,7 +40,7 @@ public class DeviceControllerTest {
 		Sender sender = new Sender();
 		when(senders.findByEmail("sender@email.com")).thenReturn(sender);
 		when(devices.contains("deviceRegistrationHash")).thenReturn(true);
-		controller.save("sender@email.com", "deviceRegistrationHash");
+		controller.save("sender@email.com", "", "deviceRegistrationHash");
 		verify(devices, never()).save(Mockito.any(Device.class));
 	}
 }

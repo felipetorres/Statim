@@ -27,6 +27,10 @@ public class DeviceDao {
 		return (Device) this.session.createCriteria(Device.class).add(Restrictions.eq("registrationId", hash)).uniqueResult();
 	}
 	
+	public Device findById(long id) {
+		return (Device) this.session.createCriteria(Device.class).add(Restrictions.eq("id", id)).uniqueResult();
+	}
+	
 	public void update(String oldHash, String newHash) {
 		Device found = find(oldHash);
 		found.setRegistrationId(newHash);
