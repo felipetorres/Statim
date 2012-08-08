@@ -62,11 +62,12 @@ public class PingManager {
 
 		String line = "";
 		while((line = reader.readLine()) != null) {
-			if(line.startsWith("id=")) {
-				return;
-			} else {
-				devices.delete(device);
-			}
+			System.out.println(line);
+//			if(line.startsWith("id=")) {
+//				return;
+//			} else {
+//				devices.delete(device);
+//			}
 		}
 	}
 	
