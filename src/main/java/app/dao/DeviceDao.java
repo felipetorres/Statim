@@ -31,9 +31,10 @@ public class DeviceDao {
 		return (Device) this.session.createCriteria(Device.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 	
-	public void update(String oldHash, String newHash) {
+	public void update(String oldHash, String newName, String newHash) {
 		Device found = find(oldHash);
 		found.setRegistrationId(newHash);
+		found.setName(newName);
 		session.update(found);
 	}
 

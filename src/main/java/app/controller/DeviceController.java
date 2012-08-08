@@ -33,9 +33,9 @@ public class DeviceController {
 		}
 	}
 	
-	@Path("/update/{oldDeviceRegistrationId}/{newDeviceRegistrationId}")
-	public void update(String oldDeviceRegistrationId, String newDeviceRegistrationId) {
+	@Path("/update/{oldDeviceRegistrationId}/{newName}/{newDeviceRegistrationId}")
+	public void update(String oldDeviceRegistrationId, String newName, String newDeviceRegistrationId) {
 		System.out.println("Atualizando id do device...");
-		devices.update(oldDeviceRegistrationId, newDeviceRegistrationId);
+		devices.update(oldDeviceRegistrationId, newName, newDeviceRegistrationId);
 	}
 }
