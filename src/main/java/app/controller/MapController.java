@@ -1,15 +1,18 @@
 package app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
 import app.manager.CoordinateManager;
-import app.model.Coordinate;
+import app.model.EnhancedCoordinate;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
+
+import com.google.gson.Gson;
 
 @Resource
 public class MapController {
@@ -27,18 +30,20 @@ public class MapController {
 	@Path("/map/addcoordinate")
 	public void addNewCoordinate() throws IOException {
 		String json = request.getReader().readLine();
-		String[] coordinates = parse(json);
+		ArrayList<String> coordinates = parse(json);
 		
-		String latitude = coordinates[0];
-		String longitude = coordinates[1];
-		String proximoEndereco = coordinates[2];
+		String latitude = coordinates.get(0);
+		String longitude = coordinates.get(1);
+		String proximoEndereco = coordinates.get(2);
+		String emailDoDevice = coordinates.get(3);
 		
-		Coordinate coordinate = new Coordinate(Double.valueOf(latitude), Double.valueOf(longitude));
+		EnhancedCoordinate coordinate = new EnhancedCoordinate(Double.valueOf(latitude), Double.valueOf(longitude), emailDoDevice);
 		manager.add(coordinate);
 	}
 
-	public String[] parse(String json) {
-		return json.replace("\"", "").replace("[", "").replace("]", "").split(",", 3);
+	public ArrayList<String> parse(String json) {
+		Gson gson = new Gson();
+		return gson.fromJson(json, ArrayList.class);
 	}
 
 	@Path("/map.json")

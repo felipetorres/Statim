@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.BufferedReader;
+import java.util.ArrayList;
 import java.util.Queue;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import app.manager.CoordinateManager;
-import app.model.Coordinate;
+import app.model.EnhancedCoordinate;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 
@@ -34,44 +35,46 @@ public class MapControllerTest {
 	
 	@Test
 	public void shouldParseCorrectyIgnoringTheLastComma() throws Exception {
-		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino, 1234\"]";
+		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino, 1234\",\"email@do.device\"]";
 		
-		String[] strings = controller.parse(json);
+		ArrayList<String> strings = controller.parse(json);
 		
-		assertEquals(strings[0], "-23.588104933333337");
-		assertEquals(strings[1], "-46.632236299999995");
-		assertEquals(strings[2], "Rua do Proximo Destino, 1234");
+		assertEquals(strings.get(0), "-23.588104933333337");
+		assertEquals(strings.get(1), "-46.632236299999995");
+		assertEquals(strings.get(2), "Rua do Proximo Destino, 1234");
+		assertEquals(strings.get(3), "email@do.device");
 		
 	}
 	
 	@Test
 	public void shouldParseCorrectyWhenAddressHasNoComma() throws Exception {
-		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino 1234\"]";
+		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino 1234\",\"email@do.device\"]";
 		
-		String[] strings = controller.parse(json);
+		ArrayList<String> strings = controller.parse(json);
 		
-		assertEquals(strings[0], "-23.588104933333337");
-		assertEquals(strings[1], "-46.632236299999995");
-		assertEquals(strings[2], "Rua do Proximo Destino 1234");
+		assertEquals(strings.get(0), "-23.588104933333337");
+		assertEquals(strings.get(1), "-46.632236299999995");
+		assertEquals(strings.get(2), "Rua do Proximo Destino 1234");
 		
 	}
 	
 	@Test
 	public void shouldAddCoordinateToArray() throws Exception {
 		
-		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino 1234\"]";
+		String json = "[\"-23.588104933333337\",\"-46.632236299999995\",\"Rua do Proximo Destino 1234\",\"email@do.device\"]";
 		
 		BufferedReader mockReader = mock(BufferedReader.class);
 		when(request.getReader()).thenReturn(mockReader);
 		when(mockReader.readLine()).thenReturn(json);
 		
 		controller.addNewCoordinate();
-		Queue<Coordinate> coordinates = manager.getCoordinates();
+		Queue<EnhancedCoordinate> coordinates = manager.getCoordinates();
 		
 		assertEquals(1, coordinates.size());
-		Coordinate coordinate = coordinates.element();
+		EnhancedCoordinate coordinate = coordinates.element();
 		
 		assertEquals(-23.588104933333337, coordinate.getLatitude(), 0);
 		assertEquals(-46.632236299999995, coordinate.getLongitude(), 0);
+		assertEquals("email@do.device", coordinate.getDeviceName());
 	}
 }

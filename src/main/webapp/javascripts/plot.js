@@ -3,10 +3,12 @@ var markers = [];
 function plot(points, map, bounds) {
 	for (var i=0;i<points.length;i++) {
 		point = new google.maps.LatLng(points[i][0],points[i][1]);
+		title = points[i][3];
         marker = new google.maps.Marker({
             map: map,
             draggable: false,
-            position: point
+            position: point,
+            title: title
         });
 		bounds.extend(point);
 		markers.push(marker);
