@@ -18,22 +18,24 @@ public class WheelTest extends GeneTest{
 		Cromossomo c3 = cromossomoWithGenes(5,2,3,4,1,6,7,8);
 		
 		SelectionContext selection = new SelectionContext(new Wheel());
+		
 		List<Cromossomo> selected = selection.select(1000, listWithCromossomos(c1,c2,c3));
 		
-		int c2_count = 0, c3_count = 0, c1_count = 0;
+		int[] count = conta(selected);
+		
+		assertTrue(count[2] >= count[1]);
+		assertTrue(count[1] >= count[0]);
+	}
+	
+	private int[] conta(List<Cromossomo> selected) {
+		int[] count = new int[3];
 		
 		for (Cromossomo cromossomo : selected) {
 			Integer val = cromossomo.getInfoOfAllGenes().get(0);
-			if (val == 2) {
-				c2_count++;
-			} else if (val == 5){
-				c3_count++;
-			} else {
-				c1_count++;
-			}
+			if (val == 1) 		count[0]++;
+			else if (val == 2) 	count[1]++;
+			else 				count[2]++;
 		}
-		
-		assertTrue(c3_count >= c2_count);
-		assertTrue(c2_count >= c1_count);
+		return count;
 	}
 }
