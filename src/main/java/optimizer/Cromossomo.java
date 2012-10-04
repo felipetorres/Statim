@@ -10,7 +10,7 @@ public class Cromossomo {
 	
 	public Cromossomo(List<Gene> genes) {
 		this.genes = genes;
-		this.fitness = -1;
+		this.fitness = genes.get(0).getInfo();
 	}
 	
 	public int size() {
@@ -23,6 +23,10 @@ public class Cromossomo {
 	
 	public List<Gene> getGenes() {
 		return genes;
+	}
+	
+	public double getFitness() {
+		return fitness;
 	}
 	
 	public List<Integer> getInfoOfAllGenes() {

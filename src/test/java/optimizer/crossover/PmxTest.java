@@ -1,16 +1,15 @@
-package optimizer;
+package optimizer.crossover;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import optimizer.crossover.CrossoverContext;
-import optimizer.crossover.PMX;
+import optimizer.Cromossomo;
+import optimizer.GeneTest;
 
 import org.junit.Test;
 
-public class CrossoverStrategyTest {
+public class PmxTest extends GeneTest{
 
 	@Test
 	public void pmx() throws Exception {
@@ -32,14 +31,5 @@ public class CrossoverStrategyTest {
 		
 		assertEquals(f1_expected, f1_pmx);
 		assertEquals(f2_expected, f2_pmx);
-	}
-	
-	private Cromossomo cromossomoWithGenes(int... infos) {
-		List<Gene> genes = new ArrayList<Gene>();
-		for (int info : infos) {
-			Gene gene = new Gene(info, false);
-			genes.add(gene);
-		}
-		return new Cromossomo(genes);
 	}
 }
