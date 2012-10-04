@@ -5,16 +5,21 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import optimizer.crossover.CrossoverContext;
+import optimizer.crossover.PMX;
+
 import org.junit.Test;
 
-public class CrossoverTest {
+public class CrossoverStrategyTest {
 
 	@Test
-	public void bla() throws Exception {
+	public void pmx() throws Exception {
 		Cromossomo c1 = cromossomoWithGenes(12,2,7,3,15,8,1,10,4);
 		Cromossomo c2 = cromossomoWithGenes(4,7,12,9,1,5,2,3,11);
 		
-		List<Cromossomo> pmx = Crossover.pmxTestWrapper(c1, c2);
+		CrossoverContext crossover = new CrossoverContext(new PMX(2,6));
+		
+		List<Cromossomo> pmx = crossover.cross(c1, c2);
 		
 		Cromossomo f1 = cromossomoWithGenes(4,12,7,3,15,8,2,9,11);
 		Cromossomo f2 = cromossomoWithGenes(7,2,12,9,1,5,15,10,4);
