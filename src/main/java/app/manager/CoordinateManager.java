@@ -18,7 +18,7 @@ public class CoordinateManager {
 	}
 	
 	public Queue<EnhancedCoordinate> getCoordinates() {
-		return coordinates; 
+		return coordinates;
 	}
 
 	public void clear() {

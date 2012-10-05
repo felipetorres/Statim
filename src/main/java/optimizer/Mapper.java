@@ -14,7 +14,16 @@ public class Mapper {
 		return coordenadas.indexOf(coordenada);
 	}
 	
+	public static List<Coordenada> getMap() {
+		List<Coordenada> defensiveCopy = new ArrayList<Coordenada>(coordenadas);
+		return defensiveCopy;
+	}
+	
 	public static Coordenada get(int index) {
 		return coordenadas.get(index);
+	}
+	
+	public static int size() {
+		return coordenadas.size();
 	}
 }

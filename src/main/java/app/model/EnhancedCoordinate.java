@@ -1,23 +1,23 @@
 package app.model;
 
+import optimizer.Coordenada;
+
 public class EnhancedCoordinate {
 
-	private double latitude;
-	private double longitude;
+	private Coordenada coordenada;
 	private final String deviceName;
 	
 	public EnhancedCoordinate(double latitude, double longitude, String deviceName) {
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.coordenada = new Coordenada(latitude, longitude);
 		this.deviceName = deviceName;
 	}
 	
 	public double getLatitude() {
-		return this.latitude;
+		return this.coordenada.getLatitude();
 	}
 	
 	public double getLongitude() {
-		return this.longitude;
+		return this.coordenada.getLongitude();
 	}
 	
 	public String getDeviceName() {
