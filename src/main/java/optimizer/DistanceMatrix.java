@@ -14,24 +14,30 @@ import com.google.gson.Gson;
 
 public class DistanceMatrix {
 	
-	private GoogleDistanceMatrixObject distanceMatrix;
+	public static GoogleDistanceMatrixObject matrix;
+	private String formatted;
 
 	public DistanceMatrix(List<Coordenada> coordenadas) {
-		String formatted = this.formatCoordinates(coordenadas);
-		this.distanceMatrix = this.getMatrixDistance(formatted);
+		formatted = this.formatCoordinates(coordenadas);
+		DistanceMatrix.matrix = this.getMatrixDistance(formatted);
 	}
 	
 	public GoogleDistanceMatrixObject getDistanceMatrix() {
-		return distanceMatrix;
+		return matrix;
+	}
+	
+	public String getFormattedCoordinates() {
+		return formatted;
 	}
 
-	public String formatCoordinates(List<Coordenada> coordenadas) {
+	private String formatCoordinates(List<Coordenada> coordenadas) {
 		String formatted = "";
 		for (Coordenada coordenada : coordenadas) {
 			formatted += coordenada.getLatitude() + "," + coordenada.getLongitude() + " ";
 		}
 		return formatted.trim().replaceAll(" ", "|");
 	}
+	
 	
 	private GoogleDistanceMatrixObject getMatrixDistance(String coordenadas) {
 		URL url;

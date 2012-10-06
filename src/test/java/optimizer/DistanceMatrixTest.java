@@ -17,7 +17,7 @@ public class DistanceMatrixTest {
 		List<Coordenada> list = listWithCoordinates();
 		
 		DistanceMatrix matrix = new DistanceMatrix(list);
-		String coordinates = matrix.formatCoordinates(list);
+		String coordinates = matrix.getFormattedCoordinates();
 		
 		assertEquals("11.111,22.222|33.333,44.444|55.555,66.666", coordinates);
 	}

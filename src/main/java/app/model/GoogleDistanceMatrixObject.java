@@ -4,28 +4,26 @@ import java.util.List;
 
 public class GoogleDistanceMatrixObject {
 
-	public List<String> destination_addresses;
-	public List<String> origin_addresses;
-	public List<Rows> rows;
+	private List<String> destination_addresses;
+	private List<String> origin_addresses;
+	private List<Rows> rows;
 	
 	public int getDistanceAtPosition(int i, int j) {
 		return this.rows.get(i).elements.get(j).distance.value;
 	}
 	
 	private class Rows {
-		public List<Element> elements;
+		private List<Element> elements;
 	}
 	
 	private class Element {
-		public TexVal distance;
-		public TexVal duration;
-		public String status;
-		
+		private TexVal distance;
+		private TexVal duration;
+		private String status;
 	}
 	
 	private class TexVal {
-		public String text;
-		public int value;
-		
+		private String text;
+		private int value;
 	}
 }

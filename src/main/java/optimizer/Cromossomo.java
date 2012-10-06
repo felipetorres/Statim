@@ -3,6 +3,8 @@ package optimizer;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.model.GoogleDistanceMatrixObject;
+
 public class Cromossomo {
 	
 	private List<Gene> genes;
@@ -27,6 +29,19 @@ public class Cromossomo {
 	
 	public double getFitness() {
 		return fitness;
+	}
+	
+	private double calculateTotalDistance() {
+		
+		double totalDistance = 0;
+		GoogleDistanceMatrixObject matrix = DistanceMatrix.matrix;
+		
+		for (int i=0; i-1<genes.size(); i++) {
+			if(!genes.get(i+1).isSpecial()) {
+				totalDistance += matrix.getDistanceAtPosition(i, i+1);
+			}
+		}
+		return totalDistance;
 	}
 	
 	public List<Integer> getInfoOfAllGenes() {
