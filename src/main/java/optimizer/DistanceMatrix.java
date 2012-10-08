@@ -14,12 +14,12 @@ import com.google.gson.Gson;
 
 public class DistanceMatrix {
 	
-	public static GoogleDistanceMatrixObject matrix;
+	private GoogleDistanceMatrixObject matrix;
 	private String formatted;
 
 	public DistanceMatrix(List<Coordenada> coordenadas) {
 		formatted = this.formatCoordinates(coordenadas);
-		DistanceMatrix.matrix = this.getMatrixDistance(formatted);
+		this.matrix = this.getMatrixDistance(formatted);
 	}
 	
 	public GoogleDistanceMatrixObject getDistanceMatrix() {
@@ -37,8 +37,7 @@ public class DistanceMatrix {
 		}
 		return formatted.trim().replaceAll(" ", "|");
 	}
-	
-	
+
 	private GoogleDistanceMatrixObject getMatrixDistance(String coordenadas) {
 		URL url;
 		try {
@@ -66,7 +65,6 @@ public class DistanceMatrix {
 		while((line = reader.readLine()) != null) {
 			lines += line;
 		}
-		
 		return (new Gson()).fromJson(lines, GoogleDistanceMatrixObject.class);
 	}
 }

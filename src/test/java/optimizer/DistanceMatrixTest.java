@@ -23,7 +23,7 @@ public class DistanceMatrixTest {
 	}
 	
 	@Test
-	public void testName() throws Exception {
+	public void shouldReturnDistanceBetweenPoints() throws Exception {
 		DistanceMatrix matrix = new DistanceMatrix(listWithCoordinates());
 		GoogleDistanceMatrixObject matrixObject = matrix.getDistanceMatrix();
 		
@@ -32,6 +32,18 @@ public class DistanceMatrixTest {
 		
 		assertEquals(4469500, distance1);
 		assertEquals(4481922, distance2);
+	}
+	
+	@Test
+	public void shouldMapCoordinatesIntoPoints() throws Exception {
+		List<Coordenada> listToMap = listWithCoordinates();
+		DistanceMatrix matrix = new DistanceMatrix(listToMap);
+		List<Coordenada> mapped = matrix.getDistanceMatrix().getCoordinates();
+		
+		for (int i=0; i<mapped.size(); i++) {
+			assertEquals(mapped.get(i).getLatitude(), listToMap.get(i).getLatitude(), 0.001);
+			assertEquals(mapped.get(i).getLongitude(), listToMap.get(i).getLongitude(), 0.001);
+		}
 	}
 	
 	private List<Coordenada> listWithCoordinates() {
