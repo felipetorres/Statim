@@ -3,7 +3,7 @@ package optimizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cromossomo {
+public class Cromossomo implements Comparable<Cromossomo>{
 	
 	private List<Gene> genes;
 	private double fitness;
@@ -56,5 +56,12 @@ public class Cromossomo {
 		} else if (!genes.equals(other.genes))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Cromossomo o) {
+		if (this.fitness > o.getFitness()) return 1;
+		else if (this.fitness < o.getFitness()) return -1;
+		return 0;
 	}
 }

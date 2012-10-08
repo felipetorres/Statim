@@ -22,8 +22,11 @@ public class FitnessCalculator {
 		double totalDistance = 0;
 		
 		for (int i=0; i<genes.size()-1; i++) {
-			if(!genes.get(i+1).isSpecial()) {
-				totalDistance += matrix.getDistanceAtPosition(i, i+1);
+			Gene geneTo = genes.get(i+1);
+			if(!geneTo.isSpecial()) {
+				int from = genes.get(i).getInfo();
+				int to = geneTo.getInfo();
+				totalDistance += matrix.getDistanceAtPosition(from, to);
 			}
 		}
 		cromossomo.setFitness(1/totalDistance);

@@ -2,8 +2,10 @@ package optimizer.crossover;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import optimizer.Cromossomo;
 import optimizer.Gene;
@@ -37,7 +39,15 @@ public class PMX implements CrossoverStrategy {
 		copiaGenesDiferentes(c1, filho);
 		copiaGenesComMapeamento(c1, filho);
 		
-		return new Cromossomo(filho);
+		Cromossomo gerado = new Cromossomo(filho);
+
+		Set<Integer> set = new HashSet<Integer>(gerado.getInfoOfAllGenes());
+		
+		if(set.size() < gerado.getInfoOfAllGenes().size()) {
+			System.out.println("Erro:\nCorte:" + loci[0] + "," + loci[1] + "\npai: " + c1.getInfoOfAllGenes() + "\nmae: " + c2.getInfoOfAllGenes() + "\nFilho:" + gerado.getInfoOfAllGenes());
+		}
+		
+		return gerado;
 	}
 
 	private void setGenes(int startAt, List<Gene> origin, List<Gene> dest) {
@@ -64,6 +74,10 @@ public class PMX implements CrossoverStrategy {
 			if(destino.get(i) == null) {
 				Gene borderGene = genes.get(i);
 				int destinoIndex = destino.indexOf(borderGene);
+				while(destino.contains(borderGene)) {
+					destinoIndex = destino.indexOf(borderGene);
+					borderGene = genes.get(destinoIndex);
+				}
 				destino.set(i, genes.get(destinoIndex));
 			}
 		}

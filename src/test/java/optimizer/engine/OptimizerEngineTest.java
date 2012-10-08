@@ -28,7 +28,7 @@ public class OptimizerEngineTest {
 		coordinates.add(c3);
 		
 		OptimizerEngine engine = new OptimizerEngine();
-		List<Cromossomo> route = engine.minimizeRoute(coordinates, 20*coordinates.size(), 1000, 10*coordinates.size());
+		List<Cromossomo> route = engine.minimizeRoute(coordinates, 20*coordinates.size(), 10000, 10*coordinates.size());
 		
 	}
 }

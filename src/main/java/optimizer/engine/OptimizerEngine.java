@@ -11,6 +11,7 @@ import optimizer.Gene;
 import optimizer.crossover.CrossoverContext;
 import optimizer.crossover.PMX;
 import optimizer.fitness.FitnessCalculator;
+import optimizer.selection.Ranking;
 import optimizer.selection.SelectionContext;
 import optimizer.selection.Wheel;
 import app.model.GoogleDistanceMatrixObject;
