@@ -20,7 +20,7 @@ public class OptimizerEngine {
 	
 	private GoogleDistanceMatrixObject matrix;
 	private List<Cromossomo> populacao;
-	private SelectionContext fittnessContext = new SelectionContext(new Wheel());
+	private SelectionContext fittnessContext = new SelectionContext(new Ranking());
 	private CrossoverContext crossoverContext = new CrossoverContext(new PMX());
 
 	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {

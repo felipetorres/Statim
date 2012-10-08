@@ -1,12 +1,9 @@
 package optimizer.engine;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import optimizer.Coordenada;
-import optimizer.Cromossomo;
 
 import org.junit.Test;
 
@@ -28,7 +25,7 @@ public class OptimizerEngineTest {
 		coordinates.add(c3);
 		
 		OptimizerEngine engine = new OptimizerEngine();
-		List<Cromossomo> route = engine.minimizeRoute(coordinates, 20*coordinates.size(), 10000, 10*coordinates.size());
+		engine.minimizeRoute(coordinates, 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
 		
 	}
 }
