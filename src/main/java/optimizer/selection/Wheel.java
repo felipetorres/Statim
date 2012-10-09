@@ -49,7 +49,7 @@ public class Wheel implements SelectionStrategy {
 		double sectorPosition = 0;
 		
 		for (Cromossomo cromossomo : population) {
-			sectorSize = (1/cromossomo.getFitness())/wheelSize;
+			sectorSize = cromossomo.getFitness()/wheelSize;
 			sectorPosition += sectorSize;
 			
 			endingSectors.put(sectorPosition, cromossomo);
@@ -60,7 +60,7 @@ public class Wheel implements SelectionStrategy {
 	private double wheelSize(List<Cromossomo> population) {
 		double wheelSize = 0;
 		for (Cromossomo cromossomo : population) {
-			wheelSize += 1/cromossomo.getFitness();
+			wheelSize += cromossomo.getFitness();
 		}
 		return wheelSize;
 	}

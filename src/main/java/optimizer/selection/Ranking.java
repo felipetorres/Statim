@@ -9,7 +9,7 @@ public class Ranking implements SelectionStrategy{
 
 	@Override
 	public List<Cromossomo> select(int amount, List<Cromossomo> population) {
-		Collections.sort(population);
+		Collections.sort(population, Collections.reverseOrder());
 		return population.subList(0, amount-1);
 	}
 }

@@ -29,7 +29,7 @@ public class FitnessCalculatorTest extends GeneTest{
 	}
 
 	@Test
-	public void shouldCalculateFitnessUsingMatrixDistances() throws Exception {
+	public void shouldCalculateDistanceUsingMatrix() throws Exception {
 		Cromossomo cromossomo = cromossomoWithGenes(0,1,2,3,4,5,6);
 		
 		FitnessCalculator calculator = new FitnessCalculator(cromossomo, matrix);

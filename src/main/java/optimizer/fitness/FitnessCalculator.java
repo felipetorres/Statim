@@ -29,6 +29,6 @@ public class FitnessCalculator {
 				totalDistance += matrix.getDistanceAtPosition(from, to);
 			}
 		}
-		cromossomo.setFitness(totalDistance);
+		cromossomo.setFitness(1/totalDistance);
 	}
 }
