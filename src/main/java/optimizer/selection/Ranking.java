@@ -12,4 +12,9 @@ public class Ranking implements SelectionStrategy{
 		Collections.sort(population, Collections.reverseOrder());
 		return population.subList(0, amount-1);
 	}
+
+	@Override
+	public String getName() {
+		return "ranking";
+	}
 }

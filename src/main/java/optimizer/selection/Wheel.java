@@ -64,4 +64,9 @@ public class Wheel implements SelectionStrategy {
 		}
 		return wheelSize;
 	}
+
+	@Override
+	public String getName() {
+		return "wheel";
+	}
 }

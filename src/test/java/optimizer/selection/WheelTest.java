@@ -25,8 +25,8 @@ public class WheelTest extends GeneTest{
 		
 		System.out.println("aqui " + count[2] + " " + count[1] + " " + count[0]);
 		
-		assertTrue(count[2] <= count[1]);
-		assertTrue(count[1] <= count[0]);
+		assertTrue(count[2] >= count[1]);
+		assertTrue(count[1] >= count[0]);
 	}
 	
 	private int[] conta(List<Cromossomo> selected) {

@@ -15,4 +15,8 @@ public class SelectionContext {
 	public List<Cromossomo> select(int amount, List<Cromossomo> population) {
 		return strategy.select(amount, population);
 	}
+	
+	public String getName() {
+		return strategy.getName();
+	}
 }

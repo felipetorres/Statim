@@ -1,5 +1,6 @@
 package optimizer.benchmark;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,14 +25,11 @@ public class BenchmarkEngine {
 	private CrossoverContext crossoverContext;
 	
 	public BenchmarkEngine(String otimo, SelectionStrategy selection, CrossoverStrategy crossover) {
-		System.out.println("Benchmark");
-		System.out.println("Wheel PMX " + otimo);
 		fittnessContext = new SelectionContext(selection);
 		crossoverContext = new CrossoverContext(crossover);
 	}
 
-	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {
-		System.out.println(popInicial + " " + geracoes + " " + fitness_amount);
+	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount, PrintWriter out) {
 		long start = System.currentTimeMillis();
 		
 		populacao = geraPopulacaoInicial(popInicial);
@@ -40,10 +38,11 @@ public class BenchmarkEngine {
 			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
 			populacao = crossover(crossoverContext, fittest);
 		}
-		System.out.println(System.currentTimeMillis() - start);
+		
+		out.println(System.currentTimeMillis() - start);
 		evaluateFitness();
 		Collections.sort(populacao, Collections.reverseOrder());
-		System.out.println(1/populacao.get(0).getFitness());
+		out.println(1/populacao.get(0).getFitness());
 		
 		return populacao;
 	}

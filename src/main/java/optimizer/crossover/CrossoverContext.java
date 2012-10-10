@@ -16,4 +16,7 @@ public class CrossoverContext {
 		return strategy.cross(pai, mae);
 	}
 	
+	public String getName() {
+		return strategy.getName();
+	}
 }

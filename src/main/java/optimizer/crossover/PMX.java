@@ -102,4 +102,9 @@ public class PMX implements CrossoverStrategy {
 		}
 		return list;
 	}
+
+	@Override
+	public String getName() {
+		return "pmx";
+	}
 }
