@@ -23,10 +23,10 @@ public class WheelTest extends GeneTest{
 		
 		int[] count = conta(selected);
 		
-		System.out.println(count[2] + " " + count[1] + " " + count[0]);
+		System.out.println("aqui " + count[2] + " " + count[1] + " " + count[0]);
 		
-		assertTrue(count[2] >= count[1]);
-		assertTrue(count[1] >= count[0]);
+		assertTrue(count[2] <= count[1]);
+		assertTrue(count[1] <= count[0]);
 	}
 	
 	private int[] conta(List<Cromossomo> selected) {
