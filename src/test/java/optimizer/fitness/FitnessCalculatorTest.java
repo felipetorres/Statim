@@ -37,6 +37,6 @@ public class FitnessCalculatorTest extends GeneTest{
 		
 		double expected = (double) 1/555;
 		
-		assertEquals(expected, cromossomo.getFitness(), 0.001);
+		assertEquals(expected, 1/cromossomo.getFitness(), 0.001);
 	}
 }
