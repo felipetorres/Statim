@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import optimizer.Coordenada;
+import optimizer.crossover.CrossoverStrategy;
+import optimizer.crossover.PMX;
+import optimizer.selection.SelectionStrategy;
+import optimizer.selection.Wheel;
 
 import org.junit.Test;
 
@@ -25,15 +29,19 @@ public class Benchmark {
 		coordinates.add(c3);
 		
 //		bench(coordinates, 1000, 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-		bench(coordinates, 100, 10*coordinates.size(), 100*coordinates.size(), 5*coordinates.size());
+		bench(100, coordinates, new Wheel(), new PMX(), 10*coordinates.size(), 100*coordinates.size(), 5*coordinates.size());
 	}
 
-	private void bench(List<Coordenada> coordinates, int instancias, int popInicial, int geracoes, int fitnessAmount) {
-		BenchmarkEngine engine = new BenchmarkEngine("865.0");
+	private void bench(int instancias, List<Coordenada> coordinates, SelectionStrategy wheel, CrossoverStrategy crossover, 
+			int popInicial, int geracoes, int fitnessAmount) {
+		
+		BenchmarkEngine engine = new BenchmarkEngine("865.0", wheel, crossover);
 		System.out.println(instancias);
+		
 		for(int i=0; i<instancias; i++) {
 			engine.minimizeRoute(coordinates, popInicial, geracoes, fitnessAmount);
 		}
+		
 		System.out.println(".");
 	}
 }

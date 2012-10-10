@@ -8,10 +8,10 @@ import optimizer.Coordenada;
 import optimizer.Cromossomo;
 import optimizer.Gene;
 import optimizer.crossover.CrossoverContext;
-import optimizer.crossover.PMX;
+import optimizer.crossover.CrossoverStrategy;
 import optimizer.fitness.FitnessCalculator;
 import optimizer.selection.SelectionContext;
-import optimizer.selection.Wheel;
+import optimizer.selection.SelectionStrategy;
 import app.model.GoogleDistanceMatrixObject;
 
 import com.google.gson.Gson;
@@ -20,12 +20,14 @@ public class BenchmarkEngine {
 	
 	private GoogleDistanceMatrixObject matrix = (new Gson()).fromJson(Example.matrix, GoogleDistanceMatrixObject.class);
 	private List<Cromossomo> populacao;
-	private SelectionContext fittnessContext = new SelectionContext(new Wheel());
-	private CrossoverContext crossoverContext = new CrossoverContext(new PMX());
+	private SelectionContext fittnessContext;
+	private CrossoverContext crossoverContext;
 	
-	public BenchmarkEngine(String otimo) {
+	public BenchmarkEngine(String otimo, SelectionStrategy selection, CrossoverStrategy crossover) {
 		System.out.println("Benchmark");
 		System.out.println("Wheel PMX " + otimo);
+		fittnessContext = new SelectionContext(selection);
+		crossoverContext = new CrossoverContext(crossover);
 	}
 
 	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {
