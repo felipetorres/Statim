@@ -73,8 +73,8 @@ public class MapControllerTest {
 		assertEquals(1, coordinates.size());
 		EnhancedCoordinate coordinate = coordinates.element();
 		
-		assertEquals(-23.588104933333337, coordinate.getLatitude(), 0);
-		assertEquals(-46.632236299999995, coordinate.getLongitude(), 0);
+		assertEquals(-23.588104933333337, coordinate.getCoordenada().getLatitude(), 0);
+		assertEquals(-46.632236299999995, coordinate.getCoordenada().getLongitude(), 0);
 		assertEquals("email@do.device", coordinate.getDeviceName());
 	}
 }

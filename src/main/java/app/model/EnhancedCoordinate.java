@@ -12,14 +12,6 @@ public class EnhancedCoordinate {
 		this.deviceName = deviceName;
 	}
 	
-	public double getLatitude() {
-		return this.coordenada.getLatitude();
-	}
-	
-	public double getLongitude() {
-		return this.coordenada.getLongitude();
-	}
-	
 	public Coordenada getCoordenada() {
 		return coordenada;
 	}

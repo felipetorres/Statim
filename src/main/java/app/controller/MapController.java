@@ -48,7 +48,7 @@ public class MapController {
 
 	@Path("/map.json")
 	public void getJSON() {
-		result.use(Results.json()).from(manager.getCoordinates(), "coordenadas").serialize();
+		result.use(Results.json()).from(manager.getCoordinates(), "coordenadas").include("coordenada").serialize();
 	}
 	
 	@Path("/map")
