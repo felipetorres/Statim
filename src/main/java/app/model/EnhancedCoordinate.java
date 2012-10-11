@@ -20,6 +20,10 @@ public class EnhancedCoordinate {
 		return this.coordenada.getLongitude();
 	}
 	
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+	
 	public String getDeviceName() {
 		return deviceName;
 	}
