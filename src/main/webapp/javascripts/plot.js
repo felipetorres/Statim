@@ -25,7 +25,9 @@ function drawPointsOnMap(url, markerList, map) {
     var points = [];
     $.getJSON(url,function (json) {
             $.each(json.coordenadas, function(i,item){
-                    points.push([item.coordenada.latitude, item.coordenda.longitude, item.deviceName])
+                $.each(item['coordenada'], function(j,coordenada) {
+                    points.push([coordenada.latitude, coordenada.longitude, item.deviceName])
+                });
             });
             clear(markerList);
             markerList = plot(points, map[0], map[1]);
