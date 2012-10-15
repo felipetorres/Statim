@@ -8,6 +8,7 @@ import java.util.List;
 
 import optimizer.Coordenada;
 import optimizer.crossover.CrossoverStrategy;
+import optimizer.crossover.Cycle;
 import optimizer.crossover.PMX;
 import optimizer.selection.Ranking;
 import optimizer.selection.SelectionStrategy;
@@ -32,8 +33,27 @@ public class Benchmark {
 		coordinates.add(c4);
 		coordinates.add(c3);
 		
-		bench(100, coordinates, new Wheel(), new PMX(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-		bench(150, coordinates, new Ranking(), new PMX(), 10*coordinates.size(), 100*coordinates.size(), 5*coordinates.size());
+//		bench(100, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(250, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(500, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(1000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(2000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(3000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(4000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(5000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		
+//		bench(100, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(250, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(500, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(1000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(2000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(3000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(4000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+//		bench(5000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+		
+//		bench(100, coordinates, new Ranking(), new PMX(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+		
+		
 	}
 
 	private void bench(int instancias, List<Coordenada> coordinates, SelectionStrategy selector, CrossoverStrategy crossover, 
@@ -53,7 +73,7 @@ public class Benchmark {
 		out.println(popInicial + " " + geracoes + " " + fitnessAmount);
 		
 		for(int i=0; i<instancias; i++) {
-			engine.minimizeRoute(coordinates, popInicial, geracoes, fitnessAmount, out);
+			engine.minimizeRouteUsingPopularity(coordinates, popInicial, 0.95, fitnessAmount, out);
 		}
 		
 		out.close();

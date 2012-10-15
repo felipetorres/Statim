@@ -9,7 +9,7 @@ import optimizer.Cromossomo;
 import optimizer.DistanceMatrix;
 import optimizer.Gene;
 import optimizer.crossover.CrossoverContext;
-import optimizer.crossover.PMX;
+import optimizer.crossover.Cycle;
 import optimizer.fitness.FitnessCalculator;
 import optimizer.selection.Ranking;
 import optimizer.selection.SelectionContext;
@@ -20,12 +20,27 @@ public class OptimizerEngine {
 	private GoogleDistanceMatrixObject matrix;
 	private List<Cromossomo> populacao;
 	private SelectionContext fittnessContext = new SelectionContext(new Ranking());
-	private CrossoverContext crossoverContext = new CrossoverContext(new PMX());
+	private CrossoverContext crossoverContext = new CrossoverContext(new Cycle());
 
 	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {
 		preprocessa(coordenadas);
 		populacao = geraPopulacaoInicial(popInicial);
 		for(int i=0;i<geracoes;i++) {
+			evaluateFitness();
+			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
+			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + fittest.get(0).getFitness());
+			populacao = crossover(crossoverContext, fittest);
+		}
+		return populacao;
+	}
+	
+	public List<Cromossomo> minimizeRouteUsingPopularity(List<Coordenada> coordenadas, int popInicial, float popularity_rate, int fitness_amount) {
+		
+		preprocessa(coordenadas);
+		populacao = geraPopulacaoInicial(popInicial);
+		Collections.sort(populacao, Collections.reverseOrder());
+		
+		while((float) Collections.frequency(populacao, populacao.get(0))/populacao.size() < popularity_rate) {
 			evaluateFitness();
 			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
 			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + fittest.get(0).getFitness());

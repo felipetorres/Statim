@@ -46,6 +46,23 @@ public class BenchmarkEngine {
 		
 		return populacao;
 	}
+	
+	
+	public List<Cromossomo> minimizeRouteUsingPopularity(List<Coordenada> coordenadas, int popInicial, double popularity_rate, int fitness_amount, PrintWriter out) {
+		populacao = geraPopulacaoInicial(popInicial);
+		Collections.sort(populacao, Collections.reverseOrder());
+		
+		while((double) Collections.frequency(populacao, populacao.get(0))/populacao.size() < popularity_rate) {
+			evaluateFitness();
+			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
+			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + 1/fittest.get(0).getFitness());
+			populacao = crossover(crossoverContext, fittest);
+		}
+		
+		Collections.sort(populacao, Collections.reverseOrder());
+		out.println(1/populacao.get(0).getFitness());
+		return populacao;
+	}
 
 	private List<Cromossomo> geraPopulacaoInicial(int n) {
 		int dimension = matrix.getDimension();
