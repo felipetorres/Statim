@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 
 public class BenchmarkEngine {
 	
-	private GoogleDistanceMatrixObject matrix = (new Gson()).fromJson(Example.matrix, GoogleDistanceMatrixObject.class);
+	private GoogleDistanceMatrixObject matrix = (new Gson()).fromJson(Example.matrix2, GoogleDistanceMatrixObject.class);
 	private List<Cromossomo> populacao;
 	private SelectionContext fittnessContext;
 	private CrossoverContext crossoverContext;
@@ -37,6 +37,7 @@ public class BenchmarkEngine {
 			evaluateFitness();
 			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
 			populacao = crossover(crossoverContext, fittest);
+			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + 1/fittest.get(0).getFitness());
 		}
 		
 		out.println(System.currentTimeMillis() - start);
