@@ -19,31 +19,36 @@ import com.google.gson.Gson;
 
 public class BenchmarkEngine {
 	
-	private GoogleDistanceMatrixObject matrix = (new Gson()).fromJson(Example.matrix2, GoogleDistanceMatrixObject.class);
+	private GoogleDistanceMatrixObject matrix;
 	private List<Cromossomo> populacao;
-	private SelectionContext fittnessContext;
+	private SelectionContext fitnessContext;
 	private CrossoverContext crossoverContext;
 	
-	public BenchmarkEngine(String otimo, SelectionStrategy selection, CrossoverStrategy crossover) {
-		fittnessContext = new SelectionContext(selection);
+	public BenchmarkEngine(String otimo, SelectionStrategy selection, CrossoverStrategy crossover, String jsonMatrix) {
+		matrix = (new Gson()).fromJson(jsonMatrix, GoogleDistanceMatrixObject.class);
+		fitnessContext = new SelectionContext(selection);
 		crossoverContext = new CrossoverContext(crossover);
 	}
 
 	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount, PrintWriter out) {
-		long start = System.currentTimeMillis();
+		Cromossomo bestSolution = null;
 		
 		populacao = geraPopulacaoInicial(popInicial);
+		
 		for(int i=0;i<geracoes;i++) {
+			
 			evaluateFitness();
-			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
+			List<Cromossomo> fittest = selectsTheFittestUsing(fitnessContext, fitness_amount);
 			populacao = crossover(crossoverContext, fittest);
-			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + 1/fittest.get(0).getFitness());
+			Collections.sort(populacao, Collections.reverseOrder());
+			
+			bestSolution = populacao.get(0);
+			
+			System.out.println(bestSolution.getInfoOfAllGenes() + " " + 1/bestSolution.getFitness());
 		}
 		
-		out.println(System.currentTimeMillis() - start);
-		evaluateFitness();
-		Collections.sort(populacao, Collections.reverseOrder());
-		out.println(1/populacao.get(0).getFitness());
+		out.println(1/bestSolution.getFitness());
+		System.out.println(1/bestSolution.getFitness());
 		
 		return populacao;
 	}
@@ -51,17 +56,25 @@ public class BenchmarkEngine {
 	
 	public List<Cromossomo> minimizeRouteUsingPopularity(List<Coordenada> coordenadas, int popInicial, double popularity_rate, int fitness_amount, PrintWriter out) {
 		populacao = geraPopulacaoInicial(popInicial);
-		Collections.sort(populacao, Collections.reverseOrder());
+		List<Cromossomo> fittest = populacao;
 		
-		while((double) Collections.frequency(populacao, populacao.get(0))/populacao.size() < popularity_rate) {
+		Cromossomo bestSolution = populacao.get(0);
+		
+		while((double) Collections.frequency(populacao, bestSolution)/populacao.size() < popularity_rate) {
+			
 			evaluateFitness();
-			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
-			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + 1/fittest.get(0).getFitness());
+			fittest = selectsTheFittestUsing(fitnessContext, fitness_amount);
 			populacao = crossover(crossoverContext, fittest);
+			Collections.sort(populacao, Collections.reverseOrder());
+			
+			bestSolution = populacao.get(0);
+			
+			System.out.println(bestSolution.getInfoOfAllGenes() + " " + 1/bestSolution.getFitness());
 		}
+
+		out.println(1/bestSolution.getFitness());
+		System.out.println(1/bestSolution.getFitness());
 		
-		Collections.sort(populacao, Collections.reverseOrder());
-		out.println(1/populacao.get(0).getFitness());
 		return populacao;
 	}
 

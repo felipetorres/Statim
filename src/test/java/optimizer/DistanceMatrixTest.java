@@ -30,7 +30,7 @@ public class DistanceMatrixTest {
 		int distance1 = matrixObject.getDistanceAtPosition(1, 2);
 		int distance2 = matrixObject.getDistanceAtPosition(2, 1);
 		
-		assertEquals(4469500, distance1);
+		assertEquals(4469501, distance1);
 		assertEquals(4481922, distance2);
 	}
 	

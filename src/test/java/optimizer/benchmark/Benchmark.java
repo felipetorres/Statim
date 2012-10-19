@@ -1,7 +1,5 @@
 package optimizer.benchmark;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -14,7 +12,6 @@ import optimizer.crossover.Cycle;
 import optimizer.crossover.PMX;
 import optimizer.selection.Ranking;
 import optimizer.selection.SelectionStrategy;
-import optimizer.selection.Wheel;
 
 import org.junit.Test;
 
@@ -53,7 +50,7 @@ public class Benchmark {
 //		bench(4000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
 //		bench(5000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
 		
-		bench(100, coordinates, new Ranking(), new PMX(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+		bench(100, "865.0", Example.matrix, coordinates, new Ranking(), new PMX(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
 	}
 	
 	
@@ -82,16 +79,14 @@ public class Benchmark {
 		list.add(c9);
 		list.add(c10);
 		
-		bench(100, list, new Ranking(), new Cycle(), 30*list.size(), 20*list.size(), 20*list.size());
+		bench(100, "602.0", Example.matrix2, list, new Ranking(), new Cycle(), 30*list.size(), 20*list.size(), 20*list.size());
 	}
 	
 
-	private void bench(int instancias, List<Coordenada> coordinates, SelectionStrategy selector, CrossoverStrategy crossover, 
-			int popInicial, int geracoes, int fitnessAmount) throws FileNotFoundException {
+	private void bench(int instancias, String otimo, String jsonMatrix, List<Coordenada> coordinates, SelectionStrategy selector, 
+			CrossoverStrategy crossover, int popInicial, int geracoes, int fitnessAmount) throws FileNotFoundException {
 		
-		String otimo = "865.0";
-		
-		BenchmarkEngine engine = new BenchmarkEngine(otimo, selector, crossover);
+		BenchmarkEngine engine = new BenchmarkEngine(otimo, selector, crossover, jsonMatrix);
 		
 		String selectorName = selector.getName();
 		String crossoverName = crossover.getName();

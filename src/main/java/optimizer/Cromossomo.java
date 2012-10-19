@@ -10,7 +10,7 @@ public class Cromossomo implements Comparable<Cromossomo>{
 	
 	public Cromossomo(List<Gene> genes) {
 		this.genes = genes;
-		this.fitness = genes.get(0).getInfo();
+		this.fitness = -1;
 	}
 	
 	public int size() {

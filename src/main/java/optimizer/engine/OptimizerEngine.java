@@ -19,19 +19,21 @@ public class OptimizerEngine {
 	
 	private GoogleDistanceMatrixObject matrix;
 	private List<Cromossomo> populacao;
-	private SelectionContext fittnessContext = new SelectionContext(new Ranking());
+	private SelectionContext fitnessContext = new SelectionContext(new Ranking());
 	private CrossoverContext crossoverContext = new CrossoverContext(new Cycle());
 
-	public List<Cromossomo> minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {
+	public Cromossomo minimizeRoute(List<Coordenada> coordenadas, int popInicial, int geracoes, int fitness_amount) {
 		preprocessa(coordenadas);
 		populacao = geraPopulacaoInicial(popInicial);
 		for(int i=0;i<geracoes;i++) {
 			evaluateFitness();
-			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
-			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + fittest.get(0).getFitness());
+			List<Cromossomo> fittest = selectsTheFittestUsing(fitnessContext, fitness_amount);
 			populacao = crossover(crossoverContext, fittest);
+			Collections.sort(populacao, Collections.reverseOrder());
+			System.out.println(populacao.get(0).getInfoOfAllGenes() + " " + 1/populacao.get(0).getFitness());
 		}
-		return populacao;
+		Collections.sort(populacao, Collections.reverseOrder());
+		return populacao.get(0);
 	}
 	
 	public List<Cromossomo> minimizeRouteUsingPopularity(List<Coordenada> coordenadas, int popInicial, float popularity_rate, int fitness_amount) {
@@ -42,7 +44,7 @@ public class OptimizerEngine {
 		
 		while((float) Collections.frequency(populacao, populacao.get(0))/populacao.size() < popularity_rate) {
 			evaluateFitness();
-			List<Cromossomo> fittest = selectsTheFittestUsing(fittnessContext, fitness_amount);
+			List<Cromossomo> fittest = selectsTheFittestUsing(fitnessContext, fitness_amount);
 			System.out.println(fittest.get(0).getInfoOfAllGenes() + " " + fittest.get(0).getFitness());
 			populacao = crossover(crossoverContext, fittest);
 		}
