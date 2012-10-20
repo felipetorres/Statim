@@ -55,7 +55,7 @@ public class Benchmark {
 	
 	
 	@Test
-	public void benchamark2() throws Exception {
+	public void doBenchmark2() throws Exception {
 		Coordenada c1 = new Coordenada(-23.581815,-46.577033);
 		Coordenada c2 = new Coordenada(-23.582228,-46.576357);
 		Coordenada c3 = new Coordenada(-23.579701,-46.578149);
