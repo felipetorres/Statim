@@ -12,6 +12,7 @@ import optimizer.crossover.Cycle;
 import optimizer.crossover.PMX;
 import optimizer.selection.Ranking;
 import optimizer.selection.SelectionStrategy;
+import optimizer.selection.Wheel;
 
 import org.junit.Test;
 
@@ -32,25 +33,10 @@ public class Benchmark {
 		coordinates.add(c4);
 		coordinates.add(c3);
 		
-//		bench(100, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(250, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(500, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(1000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(2000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(3000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(4000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(5000, coordinates, new Ranking(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		
-//		bench(100, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(250, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(500, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(1000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(2000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(3000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(4000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-//		bench(5000, coordinates, new Wheel(), new Cycle(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
-		
-		bench(100, "865.0", Example.matrix, coordinates, new Ranking(), new PMX(), 10*coordinates.size(), 10*coordinates.size(), 10*coordinates.size());
+		bench(10000, "865.0", Example.matrix, coordinates, new Ranking(), new PMX(), 20*coordinates.size(), 20*coordinates.size(), 10*coordinates.size());
+		bench(10000, "865.0", Example.matrix, coordinates, new Ranking(), new Cycle(), 20*coordinates.size(), 20*coordinates.size(), 10*coordinates.size());
+		bench(10000, "865.0", Example.matrix, coordinates, new Wheel(), new PMX(), 20*coordinates.size(), 20*coordinates.size(), 10*coordinates.size());
+		bench(10000, "865.0", Example.matrix, coordinates, new Wheel(), new Cycle(), 20*coordinates.size(), 20*coordinates.size(), 10*coordinates.size());
 	}
 	
 	
@@ -79,7 +65,10 @@ public class Benchmark {
 		list.add(c9);
 		list.add(c10);
 		
-		bench(100, "602.0", Example.matrix2, list, new Ranking(), new Cycle(), 30*list.size(), 20*list.size(), 20*list.size());
+		bench(10000, "602.0", Example.matrix2, list, new Ranking(), new PMX(), 30*list.size(), 20*list.size(), 20*list.size());
+		bench(10000, "602.0", Example.matrix2, list, new Ranking(), new Cycle(), 30*list.size(), 20*list.size(), 20*list.size());
+		bench(10000, "602.0", Example.matrix2, list, new Wheel(), new PMX(), 30*list.size(), 20*list.size(), 20*list.size());
+		bench(10000, "602.0", Example.matrix2, list, new Wheel(), new Cycle(), 30*list.size(), 20*list.size(), 20*list.size());
 	}
 	
 

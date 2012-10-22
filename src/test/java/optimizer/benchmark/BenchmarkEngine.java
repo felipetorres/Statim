@@ -39,11 +39,11 @@ public class BenchmarkEngine {
 			
 			bestSolution = step1.getPopulacao().get(0);
 			
-			System.out.println(bestSolution.getInfoOfAllGenes() + " " + 1/bestSolution.getFitness());
+//			System.out.println(bestSolution.getInfoOfAllGenes() + " " + 1/bestSolution.getFitness());
 		}
 		
 		out.println(1/bestSolution.getFitness());
-		System.out.println(1/bestSolution.getFitness());
+//		System.out.println(1/bestSolution.getFitness());
 		
 		return step1.getPopulacao();
 	}
