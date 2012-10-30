@@ -34,9 +34,9 @@ body {
 #head .logo {
 	height: 0;
 	width: 0;
-	padding-left: 290px;
+	padding-left: 280px;
 	padding-top: 39px;
-	background: url('statim.png');
+	background: url('statim.png') -5px 0;
 	overflow: hidden;
 	display: block;
 	margin: 20px 0px;
@@ -122,6 +122,7 @@ body {
 #content li a,
 #content .inicio p a,
 #content .proposta p a,
+#content .monografia p a,
 #content .work p a
 {
 	background: #e2e2e2;
@@ -132,6 +133,7 @@ body {
 #content li a:hover,
 #content .inicio p a:hover,
 #content .proposta p a:hover,
+#content .monografia p a:hover,
 #content .work p a:hover
 {
 	text-decoration: underline;
@@ -139,7 +141,8 @@ body {
 
 #content .inicio, 
 #content .proposta, 
-#content .work, 
+#content .monografia, 
+#content .work,
 #content .empreendedorismo, 
 #content .contato
 {
