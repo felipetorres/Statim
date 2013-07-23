@@ -1,9 +1,9 @@
-[submodule "Statim-Server"]
-	path = Statim-Server
-	url = git@github.com:felipetorres/Statim-Server.git
-[submodule "Statim-Mobile"]
-	path = Statim-Mobile
-	url = git@github.com:felipetorres/Statim-Mobile.git
-[submodule "Statim-Site"]
-	path = Statim-Site
-	url = git@github.com:felipetorres/Statim-Site.git
+[submodule "statim-server"]
+	path = statim-server
+	url = git@github.com:felipetorres/statim-server.git
+[submodule "statim-mobile"]
+	path = statim-mobile
+	url = git@github.com:felipetorres/statim-mobile.git
+[submodule "statim-site"]
+	path = statim-site
+	url = git@github.com:felipetorres/statim-site.git
