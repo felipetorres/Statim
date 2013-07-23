@@ -4,3 +4,6 @@
 [submodule "Statim-Mobile"]
 	path = Statim-Mobile
 	url = git@github.com:felipetorres/Statim-Mobile.git
+[submodule "Statim-Site"]
+	path = Statim-Site
+	url = git@github.com:felipetorres/Statim-Site.git
